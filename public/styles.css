@@ -271,6 +271,21 @@ main {
   box-shadow: inset 0 0 28px rgba(245, 247, 73, 0.1), 0 0 30px rgba(245, 247, 73, 0.25);
 }
 
+.leaderboard-item.highlight {
+  border-color: rgba(245, 247, 73, 0.95) !important;
+  box-shadow: inset 0 0 42px rgba(245, 247, 73, 0.35), 0 0 36px rgba(245, 247, 73, 0.45);
+}
+
+.leaderboard-item.highlight::after {
+  background: linear-gradient(120deg, rgba(245, 247, 73, 0.3), transparent 70%);
+  opacity: 1;
+}
+
+.leaderboard-item.highlight .player-name,
+.leaderboard-item.highlight .player-points {
+  color: var(--glow-yellow);
+}
+
 .leaderboard-item.empty,
 .leaderboard-item.error {
   grid-template-columns: 1fr;
@@ -462,6 +477,15 @@ main {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--glow-magenta);
+}
+
+.timeline-award .highlighted-player {
+  color: var(--glow-yellow);
+  text-shadow: 0 0 18px rgba(245, 247, 73, 0.45);
+}
+
+.timeline-award .highlighted-player-text {
+  color: var(--text);
 }
 
 .page-footer {

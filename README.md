@@ -81,7 +81,7 @@ Generate a short, non-obvious token for each guest so they can tap a NFC tag or 
    https://ytrms.github.io/game-nights/?guest=Q7xG8O
    ```
 
-   (You can also use `?token=...`, `?code=...`, or `?ticket=...` if you prefer.) Only valid tokens trigger the greeting; anything else hides the banner altogether.
+   (You can also use `?token=...`, `?code=...`, or `?ticket=...` if you prefer.) Only valid tokens trigger the greeting and highlight that guest in the leaderboard; anything else hides the banner altogether.
 
 3. Review existing tokens or remove them later:
 

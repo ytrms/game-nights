@@ -56,7 +56,18 @@ function normalizeGuestTokens(raw) {
   return {};
 }
 
-function renderLeaderboard(players = []) {
+function normalizeName(value) {
+  if (value === undefined || value === null) {
+    return "";
+  }
+  return String(value)
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function renderLeaderboard(players = [], highlightedName = null) {
   const container = document.querySelector("#leaderboard-list");
   const template = document.querySelector("#player-template");
   container.innerHTML = "";
@@ -81,6 +92,9 @@ function renderLeaderboard(players = []) {
     rank.textContent = `#${player.rank}`;
     name.textContent = player.player;
     points.textContent = `${player.points} pt${player.points === 1 ? "" : "s"}`;
+    if (highlightedName && normalizeName(player.player) === normalizeName(highlightedName)) {
+      li.classList.add("highlight");
+    }
     container.appendChild(node);
   });
 }
@@ -100,21 +114,22 @@ function getGuestTokenFromUrl() {
 
 function renderGreeting(tokens = {}) {
   const greetingEl = document.querySelector("#guest-greeting");
-  if (!greetingEl) return;
+  if (!greetingEl) return null;
   const token = getGuestTokenFromUrl();
   if (!token) {
     greetingEl.hidden = true;
     greetingEl.textContent = "";
-    return;
+    return null;
   }
   const guestName = tokens[token];
   if (!guestName) {
     greetingEl.hidden = true;
     greetingEl.textContent = "";
-    return;
+    return null;
   }
   greetingEl.hidden = false;
   greetingEl.textContent = `Welcome to the party, ${guestName}!`;
+  return guestName;
 }
 
 function renderScoringRules(rules = []) {
@@ -138,7 +153,7 @@ function renderScoringRules(rules = []) {
   });
 }
 
-function renderEvents(events = []) {
+function renderEvents(events = [], highlightedName = null) {
   const list = document.querySelector("#events-timeline");
   const template = document.querySelector("#event-template");
   const awardTemplate = document.querySelector("#timeline-award-template");
@@ -169,6 +184,11 @@ function renderEvents(events = []) {
         awardNode.querySelector(".award-player").textContent = award.player;
         awardNode.querySelector(".award-reason").textContent = award.reason;
         awardNode.querySelector(".award-points").textContent = `+${award.points}`;
+        if (highlightedName && normalizeName(award.player) === normalizeName(highlightedName)) {
+          awardNode.querySelector(".award-player").classList.add("highlighted-player");
+          awardNode.querySelector(".award-points").classList.add("highlighted-player");
+          awardNode.querySelector(".award-reason").classList.add("highlighted-player-text");
+        }
         awardsList.appendChild(awardNode);
       });
     }
@@ -216,20 +236,21 @@ function handleError(error) {
 
 async function init() {
   let guestTokens = {};
+  let highlightedName = null;
   try {
     const tokensData = await fetchGuestTokens();
     guestTokens = normalizeGuestTokens(tokensData);
   } catch (error) {
     console.warn(error);
   }
-  renderGreeting(guestTokens);
+  highlightedName = renderGreeting(guestTokens);
 
   try {
     const data = await fetchLeaderboard();
     hydrateMeta(data);
-    renderLeaderboard(data.leaderboard);
+    renderLeaderboard(data.leaderboard, highlightedName);
     renderScoringRules(data.scoringRules);
-    renderEvents(data.recentEvents);
+    renderEvents(data.recentEvents, highlightedName);
   } catch (error) {
     handleError(error);
   }
