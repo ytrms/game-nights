@@ -8,6 +8,7 @@ import json
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
+import secrets
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -17,7 +18,9 @@ PUBLIC_DIR = ROOT / "public"
 
 CONFIG_PATH = DATA_DIR / "config.json"
 EVENTS_PATH = DATA_DIR / "events.json"
+GUEST_TOKENS_PATH = DATA_DIR / "guest_tokens.json"
 LEADERBOARD_PATH = PUBLIC_DIR / "leaderboard.json"
+PUBLIC_GUEST_TOKENS_PATH = PUBLIC_DIR / "guest_tokens.json"
 
 ISO_FORMAT = "%Y-%m-%dT%H:%M:%S%z"
 
@@ -54,6 +57,31 @@ def parse_timestamp(value: Optional[str], fallback: Optional[str] = None) -> Opt
         dt = dt.replace(tzinfo=timezone.utc)
     return dt
 
+
+def load_guest_tokens() -> Dict[str, Any]:
+    payload = load_json(GUEST_TOKENS_PATH, {"tokens": {}})
+    tokens = payload.get("tokens")
+    if not isinstance(tokens, dict):
+        tokens = {}
+    cleaned = {}
+    for key, value in tokens.items():
+        if not isinstance(key, str) or not isinstance(value, str):
+            continue
+        token = key.strip()
+        name = value.strip()
+        if not token or not name:
+            continue
+        cleaned[token] = name
+    payload["tokens"] = cleaned
+    return payload
+
+
+def save_guest_tokens(payload: Dict[str, Any]) -> None:
+    tokens = payload.get("tokens")
+    if not isinstance(tokens, dict):
+        tokens = {}
+    payload["tokens"] = tokens
+    save_json(GUEST_TOKENS_PATH, payload)
 
 
 
@@ -175,8 +203,11 @@ def rebuild_leaderboard(verbose: bool = False) -> Dict[str, Any]:
     events = load_json(EVENTS_PATH, {"events": []})
     payload = compute_leaderboard(config, events)
     save_json(LEADERBOARD_PATH, payload)
+    guest_tokens = load_guest_tokens()
+    save_json(PUBLIC_GUEST_TOKENS_PATH, guest_tokens)
     if verbose:
         print(f"Wrote leaderboard to {LEADERBOARD_PATH.relative_to(ROOT)}")
+        print(f"Wrote guest tokens to {PUBLIC_GUEST_TOKENS_PATH.relative_to(ROOT)}")
     return payload
 
 
@@ -284,6 +315,84 @@ def command_rebuild(args: argparse.Namespace) -> int:
     return 0
 
 
+def generate_unique_token(existing: Dict[str, str]) -> str:
+    while True:
+        token = secrets.token_urlsafe(5).rstrip("=")
+        if token not in existing:
+            return token
+
+
+def command_tokens_add(args: argparse.Namespace) -> int:
+    names: List[str] = args.names
+    if not names:
+        entered = input("Name to create a token for (blank to cancel): ").strip()
+        if not entered:
+            print("No tokens created.")
+            return 1
+        names = [entered]
+    payload = load_guest_tokens()
+    tokens = payload.setdefault("tokens", {})
+    created: Dict[str, str] = {}
+    for name in names:
+        cleaned = name.strip()
+        if not cleaned:
+            continue
+        if cleaned in tokens.values():
+            # avoid duplicate entries with different tokens
+            existing_token = next((key for key, value in tokens.items() if value == cleaned), None)
+            if existing_token:
+                print(f"Token already exists for {cleaned}: {existing_token}")
+                continue
+        token = generate_unique_token(tokens)
+        tokens[token] = cleaned
+        created[cleaned] = token
+    if not created:
+        print("No new tokens created.")
+        return 1
+    save_guest_tokens(payload)
+    rebuild_leaderboard(verbose=args.verbose)
+    for name, token in created.items():
+        print(f"{name}: {token}")
+    return 0
+
+
+def command_tokens_list(args: argparse.Namespace) -> int:
+    payload = load_guest_tokens()
+    tokens = payload.get("tokens", {})
+    if not tokens:
+        print("No guest tokens yet. Generate one with 'tokens add'.")
+        return 0
+    print("Guest tokens:")
+    for token, name in tokens.items():
+        print(f"  {token} → {name}")
+    return 0
+
+
+def command_tokens_remove(args: argparse.Namespace) -> int:
+    tokens_to_remove: List[str] = args.tokens
+    if not tokens_to_remove:
+        entered = input("Token to remove (blank to cancel): ").strip()
+        if not entered:
+            print("No tokens removed.")
+            return 1
+        tokens_to_remove = [entered]
+    payload = load_guest_tokens()
+    tokens = payload.get("tokens", {})
+    removed_any = False
+    for token in tokens_to_remove:
+        if token in tokens:
+            removed_any = True
+            removed_name = tokens.pop(token)
+            print(f"Removed token {token} (was {removed_name}).")
+        else:
+            print(f"Token {token} not found.", file=sys.stderr)
+    if removed_any:
+        save_guest_tokens(payload)
+        rebuild_leaderboard(verbose=args.verbose)
+        return 0
+    return 1
+
+
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -316,6 +425,22 @@ def build_parser() -> argparse.ArgumentParser:
 
     rebuild_parser = subparsers.add_parser("rebuild", help="Rebuild leaderboard.json without changes")
     rebuild_parser.set_defaults(func=command_rebuild)
+
+    tokens_parser = subparsers.add_parser("tokens", help="Manage greeting tokens")
+    tokens_subparsers = tokens_parser.add_subparsers(dest="token_command")
+
+    tokens_add = tokens_subparsers.add_parser("add", help="Generate unique token(s) for guests")
+    tokens_add.add_argument("names", nargs="*", help="Guest names to create tokens for")
+    tokens_add.add_argument("--verbose", "-v", action="store_true", help="Print file updates")
+    tokens_add.set_defaults(func=command_tokens_add)
+
+    tokens_list = tokens_subparsers.add_parser("list", help="List existing guest tokens")
+    tokens_list.set_defaults(func=command_tokens_list)
+
+    tokens_remove = tokens_subparsers.add_parser("remove", help="Delete token(s)")
+    tokens_remove.add_argument("tokens", nargs="*", help="Token values to remove")
+    tokens_remove.add_argument("--verbose", "-v", action="store_true", help="Print file updates")
+    tokens_remove.set_defaults(func=command_tokens_remove)
 
     return parser
 

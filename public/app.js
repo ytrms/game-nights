@@ -1,4 +1,5 @@
 const DATA_URL = "./leaderboard.json?v=" + Date.now();
+const TOKENS_URL = "./guest_tokens.json?v=" + Date.now();
 
 async function fetchLeaderboard() {
   const response = await fetch(DATA_URL, { cache: "no-store" });
@@ -19,6 +20,40 @@ function asLocaleDate(value) {
     month: "short",
     day: "numeric",
   });
+}
+
+async function fetchGuestTokens() {
+  const response = await fetch(TOKENS_URL, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Failed to load guest tokens: ${response.status}`);
+  }
+  return response.json();
+}
+
+function normalizeGuestTokens(raw) {
+  if (!raw) return {};
+  if (Array.isArray(raw)) {
+    return raw.reduce((map, entry) => {
+      if (entry && typeof entry === "object") {
+        const { token, name } = entry;
+        if (token && name) {
+          map[String(token)] = String(name);
+        }
+      }
+      return map;
+    }, {});
+  }
+  if (typeof raw === "object") {
+    const source = raw.tokens && typeof raw.tokens === "object" ? raw.tokens : raw;
+    return Object.keys(source).reduce((map, key) => {
+      const value = source[key];
+      if (typeof value === "string" && value.trim()) {
+        map[String(key)] = value.trim();
+      }
+      return map;
+    }, {});
+  }
+  return {};
 }
 
 function renderLeaderboard(players = []) {
@@ -62,6 +97,38 @@ function renderLeaderboard(players = []) {
     }
     container.appendChild(node);
   });
+}
+
+function getGuestTokenFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const raw =
+    params.get("guest") ??
+    params.get("token") ??
+    params.get("code") ??
+    params.get("ticket");
+  if (!raw) return null;
+  const decoded = decodeURIComponent(raw.replace(/\+/g, " ")).trim();
+  if (!decoded) return null;
+  return decoded;
+}
+
+function renderGreeting(tokens = {}) {
+  const greetingEl = document.querySelector("#guest-greeting");
+  if (!greetingEl) return;
+  const token = getGuestTokenFromUrl();
+  if (!token) {
+    greetingEl.hidden = true;
+    greetingEl.textContent = "";
+    return;
+  }
+  const guestName = tokens[token];
+  if (!guestName) {
+    greetingEl.hidden = true;
+    greetingEl.textContent = "";
+    return;
+  }
+  greetingEl.hidden = false;
+  greetingEl.textContent = `Welcome to the party, ${guestName}!`;
 }
 
 function renderScoringRules(rules = []) {
@@ -162,6 +229,15 @@ function handleError(error) {
 }
 
 async function init() {
+  let guestTokens = {};
+  try {
+    const tokensData = await fetchGuestTokens();
+    guestTokens = normalizeGuestTokens(tokensData);
+  } catch (error) {
+    console.warn(error);
+  }
+  renderGreeting(guestTokens);
+
   try {
     const data = await fetchLeaderboard();
     hydrateMeta(data);

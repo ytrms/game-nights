@@ -4,9 +4,10 @@ This repo bundles a small static site and helper script for publishing the Gravi
 
 ### Project layout
 
-- `public/` — upload the files in this folder to your web host. `index.html` reads from `leaderboard.json` to render the page.
+- `public/` — upload the files in this folder to your web host (or let GitHub Pages deploy it). `index.html` reads from `leaderboard.json` to render the page.
 - `data/config.json` — page copy and scoring rules. Update this when you tweak how points are awarded or want to change the headline/tagline.
 - `data/events.json` — the running event log. Each event lists the individual point awards that were logged for that night.
+- `data/guest_tokens.json` — mapping of short greeting tokens to player names.
 - `scripts/manage_scores.py` — command-line helper for adding awards and rebuilding `public/leaderboard.json`.
 
 ### Updating scores
@@ -61,6 +62,33 @@ This repo bundles a small static site and helper script for publishing the Gravi
 - `python3 scripts/manage_scores.py list` — print the current leaderboard in the terminal.
 - `python3 scripts/manage_scores.py events` — review the event log and the points awarded at each night.
 - `python3 scripts/manage_scores.py rebuild` — regenerate `public/leaderboard.json` without changing any data (useful after editing `config.json` manually).
+
+### Personalized greeting links
+
+Generate a short, non-obvious token for each guest so they can tap a NFC tag or QR code that greets them by name:
+
+1. Create tokens
+
+   ```bash
+   python3 scripts/manage_scores.py tokens add "Sasha"
+   ```
+
+   The command prints something like `Sasha: Q7xG8O`. Repeat for each guest. Tokens are stored in `data/guest_tokens.json` and published to `public/guest_tokens.json` during `rebuild`.
+
+2. Program links onto tags/cards using the token as a query parameter:
+
+   ```
+   https://ytrms.github.io/game-nights/?guest=Q7xG8O
+   ```
+
+   (You can also use `?token=...`, `?code=...`, or `?ticket=...` if you prefer.) Only valid tokens trigger the greeting; anything else hides the banner altogether.
+
+3. Review existing tokens or remove them later:
+
+   ```bash
+   python3 scripts/manage_scores.py tokens list
+   python3 scripts/manage_scores.py tokens remove Q7xG8O
+   ```
 
 ### Customisation tips
 
