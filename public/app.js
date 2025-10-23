@@ -75,26 +75,12 @@ function renderLeaderboard(players = []) {
     const rank = node.querySelector(".player-rank");
     const name = node.querySelector(".player-name");
     const points = node.querySelector(".player-points");
-    const awardsList = node.querySelector(".player-awards");
-    const awardTemplate = document.querySelector("#award-row-template");
 
     li.dataset.rank = String(player.rank);
     rank.dataset.rank = player.rank;
     rank.textContent = `#${player.rank}`;
     name.textContent = player.player;
-    points.innerHTML = `<strong>${player.points}</strong> point${player.points === 1 ? "" : "s"} total`;
-
-    if (!player.breakdown?.length) {
-      awardsList.innerHTML =
-        '<div class="award-row"><dt>Points so far</dt><dd>Keep it rolling!</dd></div>';
-    } else {
-      player.breakdown.forEach((award) => {
-        const awardNode = awardTemplate.content.cloneNode(true);
-        awardNode.querySelector(".award-reason").textContent = award.reason;
-        awardNode.querySelector(".award-count").textContent = `${award.count} × ${award.points} pts`;
-        awardsList.appendChild(awardNode);
-      });
-    }
+    points.textContent = `${player.points} pt${player.points === 1 ? "" : "s"}`;
     container.appendChild(node);
   });
 }

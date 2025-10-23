@@ -1,3 +1,58 @@
 {
-  "events": []
+  "events": [
+    {
+      "name": "Game Night #1",
+      "date": "2025-10-25",
+      "awards": [
+        {
+          "player": "Lorenzo",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:54:02.885814+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:54:32.046039+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:05.550022+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:18.854171+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:27.871695+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:35.973503+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:42.322511+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:56:14.042034+00:00"
+        }
+      ]
+    }
+  ]
 }
