@@ -1,0 +1,12 @@
+{
+  "title": "Gravina Game Night Leaderboard",
+  "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
+  "seasonLabel": "2024 Season",
+  "scoringRules": [
+    { "label": "Win the marquee game", "points": 5 },
+    { "label": "Bring a brand-new guest", "points": 3 },
+    { "label": "Host a side quest mini game", "points": 2 },
+    { "label": "Best thematic outfit", "points": 2 }
+  ],
+  "recentEventsLimit": 8
+}
