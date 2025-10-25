@@ -51,6 +51,42 @@
           "points": 5,
           "reason": "Joined Game Night #1!",
           "timestamp": "2025-10-23T18:56:14.042034+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 10,
+          "reason": "First at Carcassonne",
+          "timestamp": "2025-10-25T20:15:24.836055+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 10,
+          "reason": "First at Carcassonne",
+          "timestamp": "2025-10-25T20:15:58.668861+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T20:16:24.988569+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T20:16:38.074740+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-25T20:16:56.647334+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-25T20:17:04.626406+00:00"
         }
       ]
     }

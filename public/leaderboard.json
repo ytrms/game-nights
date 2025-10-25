@@ -2,8 +2,110 @@
   "title": "Gravina Game Nights",
   "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
   "seasonLabel": "2026 Season",
-  "lastUpdated": "2025-10-23T18:56:14.042034+00:00",
+  "lastUpdated": "2025-10-25T20:17:04.626406+00:00",
   "leaderboard": [
+    {
+      "player": "Marcella",
+      "points": 15,
+      "breakdown": [
+        {
+          "reason": "First at Carcassonne",
+          "count": 1,
+          "points": 10
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "player": "Marcello",
+      "points": 15,
+      "breakdown": [
+        {
+          "reason": "First at Carcassonne",
+          "count": 1,
+          "points": 10
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "player": "G\u00fclsel",
+      "points": 10,
+      "breakdown": [
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Second at Carcassonne",
+          "count": 1,
+          "points": 5
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "player": "Lorenzo",
+      "points": 10,
+      "breakdown": [
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Second at Carcassonne",
+          "count": 1,
+          "points": 5
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "player": "Baran",
+      "points": 8,
+      "breakdown": [
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Third at Carcassonne",
+          "count": 1,
+          "points": 3
+        }
+      ],
+      "rank": 5
+    },
+    {
+      "player": "Manuel",
+      "points": 8,
+      "breakdown": [
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Third at Carcassonne",
+          "count": 1,
+          "points": 3
+        }
+      ],
+      "rank": 5
+    },
     {
       "player": "Andrea",
       "points": 5,
@@ -14,7 +116,7 @@
           "points": 5
         }
       ],
-      "rank": 1
+      "rank": 7
     },
     {
       "player": "Aurora",
@@ -26,79 +128,7 @@
           "points": 5
         }
       ],
-      "rank": 1
-    },
-    {
-      "player": "Baran",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "player": "G\u00fclsel",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "player": "Lorenzo",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "player": "Manuel",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "player": "Marcella",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "player": "Marcello",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 1
+      "rank": 7
     }
   ],
   "scoringRules": [
@@ -171,6 +201,42 @@
           "points": 5,
           "reason": "Joined Game Night #1!",
           "timestamp": "2025-10-23T18:56:14.042034+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 10,
+          "reason": "First at Carcassonne",
+          "timestamp": "2025-10-25T20:15:24.836055+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 10,
+          "reason": "First at Carcassonne",
+          "timestamp": "2025-10-25T20:15:58.668861+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T20:16:24.988569+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T20:16:38.074740+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-25T20:16:56.647334+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-25T20:17:04.626406+00:00"
         }
       ]
     }
