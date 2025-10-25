@@ -2,8 +2,30 @@
   "title": "Gravina Game Nights",
   "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
   "seasonLabel": "2026 Season",
-  "lastUpdated": "2025-10-25T20:17:04.626406+00:00",
+  "lastUpdated": "2025-10-25T21:53:51.450701+00:00",
   "leaderboard": [
+    {
+      "player": "Marcello",
+      "points": 17,
+      "breakdown": [
+        {
+          "reason": "First at Carcassonne",
+          "count": 1,
+          "points": 10
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Third at Buffet Boss",
+          "count": 1,
+          "points": 2
+        }
+      ],
+      "rank": 1
+    },
     {
       "player": "Marcella",
       "points": 15,
@@ -19,16 +41,60 @@
           "points": 5
         }
       ],
-      "rank": 1
+      "rank": 2
     },
     {
-      "player": "Marcello",
-      "points": 15,
+      "player": "Baran",
+      "points": 13,
       "breakdown": [
         {
-          "reason": "First at Carcassonne",
+          "reason": "First at Buffet Boss",
           "count": 1,
-          "points": 10
+          "points": 5
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Third at Carcassonne",
+          "count": 1,
+          "points": 3
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "player": "Manuel",
+      "points": 11,
+      "breakdown": [
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Second at Buffet Boss",
+          "count": 1,
+          "points": 3
+        },
+        {
+          "reason": "Third at Carcassonne",
+          "count": 1,
+          "points": 3
+        }
+      ],
+      "rank": 4
+    },
+    {
+      "player": "Andrea",
+      "points": 10,
+      "breakdown": [
+        {
+          "reason": "First at Buffet Boss",
+          "count": 1,
+          "points": 5
         },
         {
           "reason": "Joined Game Night #1!",
@@ -36,7 +102,7 @@
           "points": 5
         }
       ],
-      "rank": 1
+      "rank": 5
     },
     {
       "player": "G\u00fclsel",
@@ -53,7 +119,7 @@
           "points": 5
         }
       ],
-      "rank": 3
+      "rank": 5
     },
     {
       "player": "Lorenzo",
@@ -70,65 +136,24 @@
           "points": 5
         }
       ],
-      "rank": 3
-    },
-    {
-      "player": "Baran",
-      "points": 8,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "Third at Carcassonne",
-          "count": 1,
-          "points": 3
-        }
-      ],
       "rank": 5
-    },
-    {
-      "player": "Manuel",
-      "points": 8,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "Third at Carcassonne",
-          "count": 1,
-          "points": 3
-        }
-      ],
-      "rank": 5
-    },
-    {
-      "player": "Andrea",
-      "points": 5,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 7
     },
     {
       "player": "Aurora",
-      "points": 5,
+      "points": 8,
       "breakdown": [
         {
           "reason": "Joined Game Night #1!",
           "count": 1,
           "points": 5
+        },
+        {
+          "reason": "Second at Buffet Boss",
+          "count": 1,
+          "points": 3
         }
       ],
-      "rank": 7
+      "rank": 8
     }
   ],
   "scoringRules": [
@@ -237,6 +262,36 @@
           "points": 3,
           "reason": "Third at Carcassonne",
           "timestamp": "2025-10-25T20:17:04.626406+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 5,
+          "reason": "First at Buffet Boss",
+          "timestamp": "2025-10-25T21:52:05.955648+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 5,
+          "reason": "First at Buffet Boss",
+          "timestamp": "2025-10-25T21:52:14.675776+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 3,
+          "reason": "Second at Buffet Boss",
+          "timestamp": "2025-10-25T21:53:19.491301+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 3,
+          "reason": "Second at Buffet Boss",
+          "timestamp": "2025-10-25T21:53:29.176346+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 2,
+          "reason": "Third at Buffet Boss",
+          "timestamp": "2025-10-25T21:53:51.450701+00:00"
         }
       ]
     }
