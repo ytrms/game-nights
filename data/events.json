@@ -117,6 +117,42 @@
           "points": 2,
           "reason": "Third at Buffet Boss",
           "timestamp": "2025-10-25T21:53:51.450701+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "First at Carcassonne",
+          "timestamp": "2025-10-25T22:56:22.371138+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T22:56:42.841516+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T22:57:07.412443+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-25T22:57:12.868840+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-25T22:57:47.963297+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-25T22:57:58.533925+00:00"
         }
       ]
     }
