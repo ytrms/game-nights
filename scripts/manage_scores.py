@@ -156,8 +156,22 @@ def parse_name_arguments(values: Optional[List[str]]) -> List[str]:
     for value in values:
         if value is None:
             continue
-        for piece in str(value).split(","):
-            cleaned = piece.strip()
+        # split by comma but preserve quoted segments
+        raw = str(value)
+        buffer = ""
+        in_quotes = False
+        for char in raw:
+            if char == '"':
+                in_quotes = not in_quotes
+            if char == "," and not in_quotes:
+                cleaned = buffer.strip().strip('"')
+                if cleaned:
+                    names.append(cleaned)
+                buffer = ""
+            else:
+                buffer += char
+        if buffer:
+            cleaned = buffer.strip().strip('"')
             if cleaned:
                 names.append(cleaned)
     return names
@@ -340,8 +354,9 @@ def compute_leaderboard(
         return max(candidate_times)
 
     recent_events.sort(key=latest_timestamp_for_event, reverse=True)
+    all_events = list(recent_events)
 
-    limit = config.get("recentEventsLimit", 8)
+    limit = config.get("recentEventsLimit", 10)
     if isinstance(limit, int) and limit > 0:
         recent_events = recent_events[:limit]
 
@@ -352,6 +367,7 @@ def compute_leaderboard(
         return datetime.min.replace(tzinfo=timezone.utc)
 
     recent_plays.sort(key=latest_timestamp_for_play, reverse=True)
+    all_plays = list(recent_plays)
     if isinstance(limit, int) and limit > 0:
         recent_plays = recent_plays[:limit]
 
@@ -394,7 +410,9 @@ def compute_leaderboard(
         "leaderboard": players_list,
         "scoringRules": config.get("scoringRules", []),
         "recentEvents": recent_events,
+        "allEvents": all_events,
         "recentPlays": recent_plays,
+        "allPlays": all_plays,
         "playerActivity": activity_list,
     }
     return result
@@ -675,7 +693,7 @@ def command_plays_add(args: argparse.Namespace) -> int:
 
     def add_result(player_name: str, placement: Optional[int]) -> None:
         key = player_name.casefold()
-        if key in added and placement is None:
+        if key in added:
             return
         if placement in (1, 2, 3):
             points_value = points_map.get(placement, 0) if auto_award else 0

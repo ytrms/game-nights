@@ -70,6 +70,7 @@ function normalizeName(value) {
 function renderLeaderboard(players = [], highlightedName = null) {
   const container = document.querySelector("#leaderboard-list");
   const template = document.querySelector("#player-template");
+  if (!container || !template) return;
   container.innerHTML = "";
 
   if (!players.length) {
@@ -135,6 +136,7 @@ function renderGreeting(tokens = {}) {
 function renderScoringRules(rules = []) {
   const list = document.querySelector("#scoring-rules");
   const template = document.querySelector("#scoring-rule-template");
+  if (!list || !template) return;
   list.innerHTML = "";
 
   if (!rules.length) {
@@ -153,21 +155,30 @@ function renderScoringRules(rules = []) {
   });
 }
 
-function renderEvents(events = [], highlightedName = null) {
-  const list = document.querySelector("#events-timeline");
+function renderEvents(events = [], highlightedName = null, options = {}) {
+  const {
+    containerSelector = "#events-timeline",
+    limit,
+    emptyMessage = "No points logged yet. Awards will show here automatically.",
+  } = options;
+
+  const list = document.querySelector(containerSelector);
   const template = document.querySelector("#event-template");
   const awardTemplate = document.querySelector("#timeline-award-template");
+  if (!list || !template || !awardTemplate) return;
   list.innerHTML = "";
 
-  if (!events.length) {
+  const items = typeof limit === "number" ? events.slice(0, limit) : events;
+
+  if (!items.length) {
     const li = document.createElement("li");
     li.className = "timeline-item";
-    li.textContent = "No events logged yet. Awards will show here automatically.";
+    li.textContent = emptyMessage;
     list.appendChild(li);
     return;
   }
 
-  events.slice(0, 8).forEach((event) => {
+  items.forEach((event) => {
     const node = template.content.cloneNode(true);
     node.querySelector(".timeline-title").textContent = event.name;
     node.querySelector(".timeline-date").textContent = asLocaleDate(event.date);
@@ -204,22 +215,30 @@ function formatPlacementLabel(placement) {
   return "Participated";
 }
 
-function renderPlays(plays = [], highlightedName = null) {
-  const list = document.querySelector("#recent-plays");
+function renderPlays(plays = [], highlightedName = null, options = {}) {
+  const {
+    containerSelector = "#recent-plays",
+    limit,
+    emptyMessage = "No plays logged yet. Add one with the plays command.",
+  } = options;
+
+  const list = document.querySelector(containerSelector);
   const template = document.querySelector("#play-template");
   const awardTemplate = document.querySelector("#timeline-award-template");
   if (!list || !template || !awardTemplate) return;
   list.innerHTML = "";
 
-  if (!plays.length) {
+  const items = typeof limit === "number" ? plays.slice(0, limit) : plays;
+
+  if (!items.length) {
     const li = document.createElement("li");
     li.className = "timeline-item";
-    li.textContent = "No plays logged yet. Add one with the plays command.";
+    li.textContent = emptyMessage;
     list.appendChild(li);
     return;
   }
 
-  plays.forEach((play) => {
+  items.forEach((play) => {
     const node = template.content.cloneNode(true);
     node.querySelector(".timeline-title").textContent = play.game;
     node.querySelector(".timeline-date").textContent = asLocaleDate(play.date);
@@ -361,12 +380,14 @@ function hydrateMeta({ title, tagline, seasonLabel, lastUpdated }) {
 function handleError(error) {
   console.error(error);
   const leaderboard = document.querySelector("#leaderboard-list");
-  leaderboard.innerHTML = "";
-  const li = document.createElement("li");
-  li.className = "leaderboard-item error";
-  li.textContent =
-    "We could not load the leaderboard right now. Refresh to try again or contact Lorenzo.";
-  leaderboard.appendChild(li);
+  if (leaderboard) {
+    leaderboard.innerHTML = "";
+    const li = document.createElement("li");
+    li.className = "leaderboard-item error";
+    li.textContent =
+      "We could not load the leaderboard right now. Refresh to try again or contact Lorenzo.";
+    leaderboard.appendChild(li);
+  }
 
   const plays = document.querySelector("#recent-plays");
   if (plays) {
@@ -375,6 +396,33 @@ function handleError(error) {
     placeholder.className = "timeline-item";
     placeholder.textContent = "Could not load plays.";
     plays.appendChild(placeholder);
+  }
+
+  const eventsList = document.querySelector("#events-timeline");
+  if (eventsList) {
+    eventsList.innerHTML = "";
+    const placeholder = document.createElement("li");
+    placeholder.className = "timeline-item";
+    placeholder.textContent = "Could not load point log.";
+    eventsList.appendChild(placeholder);
+  }
+
+  const allEventsList = document.querySelector("#all-events-list");
+  if (allEventsList) {
+    allEventsList.innerHTML = "";
+    const placeholder = document.createElement("li");
+    placeholder.className = "timeline-item";
+    placeholder.textContent = "Could not load point log.";
+    allEventsList.appendChild(placeholder);
+  }
+
+  const fullPlaysList = document.querySelector("#all-plays-list");
+  if (fullPlaysList) {
+    fullPlaysList.innerHTML = "";
+    const placeholder = document.createElement("li");
+    placeholder.className = "timeline-item";
+    placeholder.textContent = "Could not load plays.";
+    fullPlaysList.appendChild(placeholder);
   }
 
   const activity = document.querySelector("#player-activity");
@@ -401,11 +449,40 @@ async function init() {
   try {
     const data = await fetchLeaderboard();
     hydrateMeta(data);
+
+    const allPlays = data.allPlays || data.recentPlays || [];
+    const allEvents = data.allEvents || data.recentEvents || [];
+    const recentEvents = data.recentEvents || [];
+
     renderLeaderboard(data.leaderboard, highlightedName);
-    renderPlays(data.recentPlays, highlightedName);
+    renderPlays(allPlays, highlightedName, { limit: 3 });
     renderScoringRules(data.scoringRules);
-    renderEvents(data.recentEvents, highlightedName);
+    renderEvents(recentEvents, highlightedName, { limit: 5 });
     renderPlayerActivity(data.playerActivity, highlightedName);
+
+    const viewAllPlaysButton = document.querySelector("#view-all-plays");
+    if (viewAllPlaysButton) {
+      viewAllPlaysButton.style.display = allPlays.length > 3 ? "inline-flex" : "none";
+    }
+
+    const viewAllEventsButton = document.querySelector("#view-all-events");
+    if (viewAllEventsButton) {
+      viewAllEventsButton.style.display = allEvents.length > recentEvents.length ? "inline-flex" : "none";
+    }
+
+    if (document.querySelector("#all-plays-list")) {
+      renderPlays(allPlays, highlightedName, {
+        containerSelector: "#all-plays-list",
+        emptyMessage: "No plays logged yet. Add one with the plays command.",
+      });
+    }
+
+    if (document.querySelector("#all-events-list")) {
+      renderEvents(allEvents, highlightedName, {
+        containerSelector: "#all-events-list",
+        emptyMessage: "No points logged yet. Awards will show here automatically.",
+      });
+    }
   } catch (error) {
     handleError(error);
   }

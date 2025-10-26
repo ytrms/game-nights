@@ -1,3 +1,208 @@
 {
-  "plays": []
+  "plays": [
+    {
+      "id": "4d8f5b20ee92",
+      "game": "Carcassonne",
+      "date": "2025-10-25",
+      "event": "Game Night #1",
+      "scored": true,
+      "notes": "La nostra prima partita a Carcassonne dopo aver imparato.",
+      "timestamp": "2025-10-26T09:13:09.504685+00:00",
+      "results": [
+        {
+          "player": "Marcello",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Marcella",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Lorenzo",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Manuel",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Baran",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Andrea",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "d5b591525637",
+      "game": "Buffet Boss",
+      "date": "2025-10-25",
+      "event": "Game Night #1",
+      "scored": true,
+      "notes": "Prima partita a Buffet Boss dopo aver imparato. Con personaggi.",
+      "timestamp": "2025-10-26T09:16:49.745994+00:00",
+      "results": [
+        {
+          "player": "Baran",
+          "placement": 1,
+          "points": 5
+        },
+        {
+          "player": "Andrea",
+          "placement": 1,
+          "points": 5
+        },
+        {
+          "player": "Aurora",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Manuel",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": 3,
+          "points": 2
+        },
+        {
+          "player": "Marcella",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Lorenzo",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "69e3e7405a0c",
+      "game": "Carcassonne",
+      "date": "2025-10-25",
+      "event": "Game Night #1",
+      "scored": true,
+      "notes": "Con fiume e macchine volanti.",
+      "timestamp": "2025-10-26T09:19:33.964795+00:00",
+      "results": [
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 5
+        },
+        {
+          "player": "Aurora",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Baran",
+          "placement": 3,
+          "points": 2
+        },
+        {
+          "player": "Andrea",
+          "placement": 3,
+          "points": 2
+        },
+        {
+          "player": "Lorenzo",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Manuel",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "f7a114a6c516",
+      "game": "Carcassonne",
+      "date": "2025-10-25",
+      "event": "Game Night #1",
+      "scored": true,
+      "notes": "Ultima partita della serata. Con fiume, macchine volanti, e ponti.",
+      "timestamp": "2025-10-26T09:26:22.427342+00:00",
+      "results": [
+        {
+          "player": "Marcello",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Lorenzo",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcella",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Baran",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Andrea",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Manuel",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    }
+  ]
 }

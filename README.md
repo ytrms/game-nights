@@ -101,13 +101,14 @@ python3 scripts/manage_scores.py plays add \
   --date 2025-10-25 \
   --event "Game Night #1" \
   --players "Lorenzo, Andrea, Aurora, Marcello" \
-  --first "Lorenzo" \
-  --second "Andrea" \
-  --third "Aurora"
+  --first "Lorenzo, Andrea" \
+  --second "Marcello" \
+  --points-first 10 \
+  --points-second 4
 ```
 
-- Omit any option to be prompted interactively.
-- Use `--unranked` for casual sessions; ranked plays award points automatically (5/3/2 by default) unless you pass `--no-award`.
+- Omit any option to be prompted interactively. You can repeat `--first/--second/--third` or provide comma-separated names (use quotes if a name contains a comma).
+- Use `--unranked` for casual sessions; ranked plays award points automatically (5/3/2 by default) unless you pass `--no-award`. Override the values with `--points-first/--points-second/--points-third`—every player tied for a placement receives the full amount you set.
 - Review or audit the log at any time:
 
   ```bash
@@ -115,6 +116,10 @@ python3 scripts/manage_scores.py plays add \
   ```
 
 These entries populate the `playerActivity` section so guests can see how often they’ve played each game—even if no points were on the line.
+
+The homepage shows the three most recent sessions; tap **View all plays** (or open `/plays.html`) for the full archive.
+
+The point log works the same way: the homepage lists the last 10 entries, and `/points.html` carries the full award history.
 
 ### Customisation tips
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Point Log · Game Night Leaderboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <header class="page-header">
+      <div class="content">
+        <h1 id="page-title">Point log</h1>
+        <p id="page-tagline" class="tagline">
+          Every award handed out across game nights, in chronological order.
+        </p>
+        <div id="guest-greeting" class="guest-greeting" hidden></div>
+        <div class="meta">
+          <span id="season-label" class="chip"></span>
+          <span id="last-updated" class="chip secondary"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section aria-labelledby="all-events-heading" class="card">
+        <div class="section-header">
+          <h2 id="all-events-heading">All points awarded</h2>
+          <p class="section-subtitle">
+            Tokens still highlight your wins—scroll through to relive every clutch moment.
+          </p>
+        </div>
+        <ul id="all-events-list" class="timeline"></ul>
+        <div class="card-footer">
+          <a class="neon-button" href="./index.html">Back to leaderboard</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="content">
+        <p>See something missing? Ping Lorenzo and we’ll fix the log.</p>
+      </div>
+    </footer>
+
+    <template id="event-template">
+      <li class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <span class="timeline-title"></span>
+            <span class="timeline-date"></span>
+          </div>
+          <ul class="timeline-awards"></ul>
+        </div>
+      </li>
+    </template>
+
+    <template id="timeline-award-template">
+      <li class="timeline-award">
+        <span class="award-player"></span>
+        <span class="award-reason"></span>
+        <span class="award-points"></span>
+      </li>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
