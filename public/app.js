@@ -453,6 +453,7 @@ async function init() {
     const allPlays = data.allPlays || data.recentPlays || [];
     const allEvents = data.allEvents || data.recentEvents || [];
     const recentEvents = data.recentEvents || [];
+    const searchSuffix = window.location.search || "";
 
     renderLeaderboard(data.leaderboard, highlightedName);
     renderPlays(allPlays, highlightedName, { limit: 3 });
@@ -462,11 +463,13 @@ async function init() {
 
     const viewAllPlaysButton = document.querySelector("#view-all-plays");
     if (viewAllPlaysButton) {
+      viewAllPlaysButton.href = `./plays.html${searchSuffix}`;
       viewAllPlaysButton.style.display = allPlays.length > 3 ? "inline-flex" : "none";
     }
 
     const viewAllEventsButton = document.querySelector("#view-all-events");
     if (viewAllEventsButton) {
+      viewAllEventsButton.href = `./points.html${searchSuffix}`;
       viewAllEventsButton.style.display = allEvents.length > recentEvents.length ? "inline-flex" : "none";
     }
 
@@ -475,6 +478,10 @@ async function init() {
         containerSelector: "#all-plays-list",
         emptyMessage: "No plays logged yet. Add one with the plays command.",
       });
+      const backLink = document.querySelector("#back-to-leaderboard");
+      if (backLink) {
+        backLink.href = `./index.html${searchSuffix}`;
+      }
     }
 
     if (document.querySelector("#all-events-list")) {
@@ -482,6 +489,10 @@ async function init() {
         containerSelector: "#all-events-list",
         emptyMessage: "No points logged yet. Awards will show here automatically.",
       });
+      const backLink = document.querySelector("#back-to-leaderboard");
+      if (backLink) {
+        backLink.href = `./index.html${searchSuffix}`;
+      }
     }
   } catch (error) {
     handleError(error);
