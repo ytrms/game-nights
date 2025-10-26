@@ -7,6 +7,7 @@ This repo bundles a small static site and helper script for publishing the Gravi
 - `public/` — upload the files in this folder to your web host (or let GitHub Pages deploy it). `index.html` reads from `leaderboard.json` to render the page.
 - `data/config.json` — page copy and scoring rules. Update this when you tweak how points are awarded or want to change the headline/tagline.
 - `data/events.json` — the running event log. Each event lists the individual point awards that were logged for that night.
+- `data/plays.json` — every game play (ranked or unranked) with placements and participants.
 - `data/guest_tokens.json` — mapping of short greeting tokens to player names.
 - `scripts/manage_scores.py` — command-line helper for adding awards and rebuilding `public/leaderboard.json`.
 
@@ -89,6 +90,31 @@ Generate a short, non-obvious token for each guest so they can tap a NFC tag or 
    python3 scripts/manage_scores.py tokens list
    python3 scripts/manage_scores.py tokens remove Q7xG8O
    ```
+
+### Logging plays
+
+Every play—ranked or unranked—feeds the new “Recent plays” timeline and per-player activity cards on the site.
+
+```bash
+python3 scripts/manage_scores.py plays add \
+  --game "Carcassonne" \
+  --date 2025-10-25 \
+  --event "Game Night #1" \
+  --players "Lorenzo, Andrea, Aurora, Marcello" \
+  --first "Lorenzo" \
+  --second "Andrea" \
+  --third "Aurora"
+```
+
+- Omit any option to be prompted interactively.
+- Use `--unranked` for casual sessions; ranked plays award points automatically (5/3/2 by default) unless you pass `--no-award`.
+- Review or audit the log at any time:
+
+  ```bash
+  python3 scripts/manage_scores.py plays list --limit 10
+  ```
+
+These entries populate the `playerActivity` section so guests can see how often they’ve played each game—even if no points were on the line.
 
 ### Customisation tips
 

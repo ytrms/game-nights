@@ -379,5 +379,104 @@
         }
       ]
     }
+  ],
+  "recentPlays": [],
+  "playerActivity": [
+    {
+      "player": "Andrea",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "Aurora",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "Baran",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "G\u00fclsel",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "Lorenzo",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "Manuel",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "Marcella",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "player": "Marcello",
+      "totalPlays": 0,
+      "scoredPlays": 0,
+      "unscoredPlays": 0,
+      "games": [],
+      "podiums": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    }
   ]
 }

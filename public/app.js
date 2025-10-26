@@ -197,6 +197,141 @@ function renderEvents(events = [], highlightedName = null) {
   });
 }
 
+function formatPlacementLabel(placement) {
+  if (placement === 1) return "1st place";
+  if (placement === 2) return "2nd place";
+  if (placement === 3) return "3rd place";
+  return "Participated";
+}
+
+function renderPlays(plays = [], highlightedName = null) {
+  const list = document.querySelector("#recent-plays");
+  const template = document.querySelector("#play-template");
+  const awardTemplate = document.querySelector("#timeline-award-template");
+  if (!list || !template || !awardTemplate) return;
+  list.innerHTML = "";
+
+  if (!plays.length) {
+    const li = document.createElement("li");
+    li.className = "timeline-item";
+    li.textContent = "No plays logged yet. Add one with the plays command.";
+    list.appendChild(li);
+    return;
+  }
+
+  plays.forEach((play) => {
+    const node = template.content.cloneNode(true);
+    node.querySelector(".timeline-title").textContent = play.game;
+    node.querySelector(".timeline-date").textContent = asLocaleDate(play.date);
+    const meta = node.querySelector(".timeline-meta");
+    const parts = [];
+    parts.push(play.scored ? "Ranked" : "Unranked");
+    if (play.event) {
+      parts.push(`@ ${play.event}`);
+    }
+    meta.textContent = parts.join(" • ");
+
+    const resultsList = node.querySelector(".play-results");
+    const results = play.results || [];
+    if (!results.length) {
+      const item = document.createElement("li");
+      item.className = "timeline-award";
+      item.textContent = "Players pending";
+      resultsList.appendChild(item);
+    } else {
+      results.forEach((result) => {
+        const resultNode = awardTemplate.content.cloneNode(true);
+        const playerEl = resultNode.querySelector(".award-player");
+        const reasonEl = resultNode.querySelector(".award-reason");
+        const pointsEl = resultNode.querySelector(".award-points");
+        playerEl.textContent = result.player;
+        reasonEl.textContent = formatPlacementLabel(result.placement);
+        pointsEl.textContent = result.points ? `+${result.points}` : "—";
+
+        if (highlightedName && normalizeName(result.player) === normalizeName(highlightedName)) {
+          playerEl.classList.add("highlighted-player");
+          pointsEl.classList.add("highlighted-player");
+          reasonEl.classList.add("highlighted-player-text");
+        }
+
+        resultsList.appendChild(resultNode);
+      });
+    }
+
+    const notesEl = node.querySelector(".timeline-notes");
+    if (play.notes) {
+      notesEl.textContent = play.notes;
+    } else {
+      notesEl.remove();
+    }
+
+    list.appendChild(node);
+  });
+}
+
+function renderPlayerActivity(activity = [], highlightedName = null) {
+  const container = document.querySelector("#player-activity");
+  const template = document.querySelector("#activity-card-template");
+  if (!container || !template) return;
+  container.innerHTML = "";
+
+  const meaningful = activity.filter((entry) => entry.totalPlays > 0 || entry.games?.length);
+  if (!meaningful.length) {
+    const placeholder = document.createElement("p");
+    placeholder.className = "timeline-notes";
+    placeholder.textContent = "Log plays to build up player activity stats.";
+    container.appendChild(placeholder);
+    return;
+  }
+
+  meaningful.forEach((entry) => {
+    const node = template.content.cloneNode(true);
+    const card = node.querySelector(".activity-card");
+    const nameEl = node.querySelector(".activity-player");
+    const totalEl = node.querySelector(".activity-total");
+    const statsEl = node.querySelector(".activity-stats");
+
+    nameEl.textContent = entry.player;
+    totalEl.textContent = `${entry.totalPlays} play${entry.totalPlays === 1 ? "" : "s"}`;
+
+    const games = entry.games || [];
+    if (games.length) {
+      games.slice(0, 3).forEach((game) => {
+        const dt = document.createElement("dt");
+        dt.textContent = game.game;
+        const dd = document.createElement("dd");
+        dd.textContent = `${game.count}×`;
+        statsEl.appendChild(dt);
+        statsEl.appendChild(dd);
+      });
+    } else {
+      const dt = document.createElement("dt");
+      dt.textContent = "Games";
+      const dd = document.createElement("dd");
+      dd.textContent = "None yet";
+      statsEl.appendChild(dt);
+      statsEl.appendChild(dd);
+    }
+
+    const podiums = entry.podiums || {};
+    const podiumTotal = (Number(podiums["1"] || 0) + Number(podiums["2"] || 0) + Number(podiums["3"] || 0));
+    if (podiumTotal > 0) {
+      const dt = document.createElement("dt");
+      dt.textContent = "Podiums";
+      const dd = document.createElement("dd");
+      dd.textContent = `${podiums["1"] || 0}/${podiums["2"] || 0}/${podiums["3"] || 0}`;
+      statsEl.appendChild(dt);
+      statsEl.appendChild(dd);
+    }
+
+    if (highlightedName && normalizeName(entry.player) === normalizeName(highlightedName)) {
+      card.classList.add("highlight");
+    }
+
+    container.appendChild(node);
+  });
+}
+
 function hydrateMeta({ title, tagline, seasonLabel, lastUpdated }) {
   const titleEl = document.querySelector("#page-title");
   const taglineEl = document.querySelector("#page-tagline");
@@ -232,6 +367,24 @@ function handleError(error) {
   li.textContent =
     "We could not load the leaderboard right now. Refresh to try again or contact Lorenzo.";
   leaderboard.appendChild(li);
+
+  const plays = document.querySelector("#recent-plays");
+  if (plays) {
+    plays.innerHTML = "";
+    const placeholder = document.createElement("li");
+    placeholder.className = "timeline-item";
+    placeholder.textContent = "Could not load plays.";
+    plays.appendChild(placeholder);
+  }
+
+  const activity = document.querySelector("#player-activity");
+  if (activity) {
+    activity.innerHTML = "";
+    const placeholder = document.createElement("p");
+    placeholder.className = "timeline-notes";
+    placeholder.textContent = "Player activity unavailable.";
+    activity.appendChild(placeholder);
+  }
 }
 
 async function init() {
@@ -249,8 +402,10 @@ async function init() {
     const data = await fetchLeaderboard();
     hydrateMeta(data);
     renderLeaderboard(data.leaderboard, highlightedName);
+    renderPlays(data.recentPlays, highlightedName);
     renderScoringRules(data.scoringRules);
     renderEvents(data.recentEvents, highlightedName);
+    renderPlayerActivity(data.playerActivity, highlightedName);
   } catch (error) {
     handleError(error);
   }
