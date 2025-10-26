@@ -2,7 +2,7 @@
   "title": "Gravina Game Nights",
   "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
   "seasonLabel": "2026 Season",
-  "lastUpdated": "2025-10-26T13:55:18.704198+00:00",
+  "lastUpdated": "2025-10-26T14:04:55.934528+00:00",
   "leaderboard": [
     {
       "player": "Marcello",
@@ -143,7 +143,7 @@
     },
     {
       "player": "Andrea",
-      "points": 13,
+      "points": 14,
       "breakdown": [
         {
           "reason": "1st place in Buffet Boss",
@@ -159,6 +159,11 @@
           "reason": "3rd place in Carcassonne",
           "count": 1,
           "points": 3
+        },
+        {
+          "reason": "Honesty Point",
+          "count": 1,
+          "points": 1
         }
       ],
       "rank": 7
@@ -215,88 +220,70 @@
       "date": "2025-10-25",
       "awards": [
         {
-          "player": "Lorenzo",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:54:02.885814+00:00"
-        },
-        {
-          "player": "G\u00fclsel",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:54:32.046039+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:05.550022+00:00"
+          "player": "Andrea",
+          "points": 1,
+          "reason": "Honesty Point",
+          "timestamp": "2025-10-26T14:04:55.934528+00:00"
         },
         {
           "player": "Manuel",
+          "points": 1,
+          "reason": "Honesty Point",
+          "timestamp": "2025-10-26T13:55:18.704198+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+        },
+        {
+          "player": "Lorenzo",
           "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:18.854171+00:00"
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:26:22.427342+00:00"
         },
         {
           "player": "Aurora",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:27.871695+00:00"
-        },
-        {
-          "player": "Marcello",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:35.973503+00:00"
-        },
-        {
-          "player": "Marcella",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:42.322511+00:00"
-        },
-        {
-          "player": "Andrea",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:56:14.042034+00:00"
-        },
-        {
-          "player": "Marcello",
-          "points": 10,
-          "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
-        },
-        {
-          "player": "Marcella",
-          "points": 10,
-          "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
-        },
-        {
-          "player": "Lorenzo",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:26:22.427342+00:00"
         },
         {
           "player": "G\u00fclsel",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
-          "player": "Manuel",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "player": "Aurora",
+          "points": 10,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
           "player": "Baran",
           "points": 3,
           "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
           "player": "Baran",
@@ -329,64 +316,88 @@
           "timestamp": "2025-10-26T09:16:49.745994+00:00"
         },
         {
-          "player": "G\u00fclsel",
+          "player": "Marcello",
           "points": 10,
           "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Aurora",
-          "points": 10,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Marcello",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
           "player": "Marcella",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Andrea",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Marcello",
           "points": 10,
           "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
           "player": "Lorenzo",
           "points": 5,
           "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
-          "player": "Aurora",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
           "player": "Manuel",
-          "points": 1,
-          "reason": "Honesty Point",
-          "timestamp": "2025-10-26T13:55:18.704198+00:00"
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:56:14.042034+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:42.322511+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:35.973503+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:27.871695+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:18.854171+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:05.550022+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:54:32.046039+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:54:02.885814+00:00"
         }
       ]
     }
@@ -397,88 +408,70 @@
       "date": "2025-10-25",
       "awards": [
         {
-          "player": "Lorenzo",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:54:02.885814+00:00"
-        },
-        {
-          "player": "G\u00fclsel",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:54:32.046039+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:05.550022+00:00"
+          "player": "Andrea",
+          "points": 1,
+          "reason": "Honesty Point",
+          "timestamp": "2025-10-26T14:04:55.934528+00:00"
         },
         {
           "player": "Manuel",
+          "points": 1,
+          "reason": "Honesty Point",
+          "timestamp": "2025-10-26T13:55:18.704198+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+        },
+        {
+          "player": "Lorenzo",
           "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:18.854171+00:00"
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:26:22.427342+00:00"
         },
         {
           "player": "Aurora",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:27.871695+00:00"
-        },
-        {
-          "player": "Marcello",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:35.973503+00:00"
-        },
-        {
-          "player": "Marcella",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:42.322511+00:00"
-        },
-        {
-          "player": "Andrea",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:56:14.042034+00:00"
-        },
-        {
-          "player": "Marcello",
-          "points": 10,
-          "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
-        },
-        {
-          "player": "Marcella",
-          "points": 10,
-          "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
-        },
-        {
-          "player": "Lorenzo",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:26:22.427342+00:00"
         },
         {
           "player": "G\u00fclsel",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
-          "player": "Manuel",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "player": "Aurora",
+          "points": 10,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
           "player": "Baran",
           "points": 3,
           "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
           "player": "Baran",
@@ -511,64 +504,88 @@
           "timestamp": "2025-10-26T09:16:49.745994+00:00"
         },
         {
-          "player": "G\u00fclsel",
+          "player": "Marcello",
           "points": 10,
           "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Aurora",
-          "points": 10,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Marcello",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
           "player": "Marcella",
-          "points": 5,
-          "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Andrea",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Marcello",
           "points": 10,
           "reason": "1st place in Carcassonne",
-          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
           "player": "Lorenzo",
           "points": 5,
           "reason": "2nd place in Carcassonne",
-          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
-          "player": "Aurora",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:26:22.427342+00:00"
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
           "player": "Manuel",
-          "points": 1,
-          "reason": "Honesty Point",
-          "timestamp": "2025-10-26T13:55:18.704198+00:00"
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2025-10-26T09:13:09.504685+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:56:14.042034+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:42.322511+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:35.973503+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:27.871695+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:18.854171+00:00"
+        },
+        {
+          "player": "Baran",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:55:05.550022+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:54:32.046039+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 5,
+          "reason": "Joined Game Night #1!",
+          "timestamp": "2025-10-23T18:54:02.885814+00:00"
         }
       ]
     }

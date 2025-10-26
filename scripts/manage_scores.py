@@ -254,6 +254,12 @@ def compute_leaderboard(
             )
 
         if event_entry["awards"]:
+            event_entry["awards"].sort(
+                key=lambda award: parse_timestamp(award.get("timestamp"))
+                or parse_timestamp(event.get("date"))
+                or datetime.min.replace(tzinfo=timezone.utc),
+                reverse=True,
+            )
             recent_events.append(event_entry)
 
     for play in plays:

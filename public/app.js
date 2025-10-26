@@ -228,6 +228,8 @@ function renderEvents(events = [], highlightedName = null, options = {}) {
     containerSelector = "#events-timeline",
     limit,
     emptyMessage = "No points logged yet. Awards will show here automatically.",
+    awardPreviewLimit = null,
+    allowExpand = false,
   } = options;
 
   const list = document.querySelector(containerSelector);
@@ -251,25 +253,77 @@ function renderEvents(events = [], highlightedName = null, options = {}) {
     node.querySelector(".timeline-title").textContent = event.name;
     node.querySelector(".timeline-date").textContent = asLocaleDate(event.date);
     const awardsList = node.querySelector(".timeline-awards");
+    const expandButton = node.querySelector(".timeline-expand");
 
     if (!event.awards?.length) {
       const placeholder = document.createElement("li");
       placeholder.className = "timeline-award";
       placeholder.textContent = "Awards logged, details pending.";
       awardsList.appendChild(placeholder);
+      if (expandButton) {
+        expandButton.hidden = true;
+      }
     } else {
-      event.awards.forEach((award) => {
+      const previewCount =
+        allowExpand && typeof awardPreviewLimit === "number" ? Math.max(0, awardPreviewLimit) : event.awards.length;
+      const collapsedItems = [];
+
+      event.awards.forEach((award, idx) => {
         const awardNode = awardTemplate.content.cloneNode(true);
-        awardNode.querySelector(".award-player").textContent = award.player;
-        awardNode.querySelector(".award-reason").textContent = award.reason;
-        awardNode.querySelector(".award-points").textContent = `+${award.points}`;
+        const awardItem = awardNode.querySelector(".timeline-award");
+        const playerEl = awardNode.querySelector(".award-player");
+        const reasonEl = awardNode.querySelector(".award-reason");
+        const pointsEl = awardNode.querySelector(".award-points");
+
+        playerEl.textContent = award.player;
+        reasonEl.textContent = award.reason;
+        pointsEl.textContent = `+${award.points}`;
+
         if (highlightedName && normalizeName(award.player) === normalizeName(highlightedName)) {
-          awardNode.querySelector(".award-player").classList.add("highlighted-player");
-          awardNode.querySelector(".award-points").classList.add("highlighted-player");
-          awardNode.querySelector(".award-reason").classList.add("highlighted-player-text");
+          playerEl.classList.add("highlighted-player");
+          pointsEl.classList.add("highlighted-player");
+          reasonEl.classList.add("highlighted-player-text");
         }
+
+        if (allowExpand && idx >= previewCount) {
+          if (awardItem) {
+            awardItem.classList.add("is-collapsed");
+            collapsedItems.push(awardItem);
+          }
+        }
+
         awardsList.appendChild(awardNode);
       });
+
+      if (allowExpand && collapsedItems.length && expandButton) {
+        expandButton.hidden = false;
+        const hiddenCount = collapsedItems.length;
+        const updateLabel = (expanded) => {
+          expandButton.textContent = expanded
+            ? "Hide awards"
+            : hiddenCount === 1
+            ? "Show 1 more"
+            : `Show ${hiddenCount} more`;
+        };
+        const setExpanded = (expanded) => {
+          collapsedItems.forEach((item) => {
+            if (!item) return;
+            item.classList.toggle("is-collapsed", !expanded);
+          });
+          updateLabel(expanded);
+        };
+        expandButton.dataset.expanded = "false";
+        updateLabel(false);
+        expandButton.addEventListener("click", () => {
+          const expanded = expandButton.dataset.expanded === "true";
+          const next = !expanded;
+          expandButton.dataset.expanded = String(next);
+          setExpanded(next);
+        });
+      } else if (expandButton) {
+        expandButton.hidden = true;
+        expandButton.textContent = "";
+      }
     }
 
     list.appendChild(node);
@@ -526,7 +580,11 @@ async function init() {
     renderLeaderboard(data.leaderboard, highlightedName);
     renderPlays(allPlays, highlightedName, { limit: 3 });
     renderScoringRules(data.scoringRules);
-    renderEvents(recentEvents, highlightedName, { limit: 5 });
+    renderEvents(recentEvents, highlightedName, {
+      limit: 5,
+      awardPreviewLimit: 5,
+      allowExpand: true,
+    });
     renderPlayerActivity(data.playerActivity, highlightedName);
 
     const viewAllPlaysButton = document.querySelector("#view-all-plays");
@@ -556,6 +614,7 @@ async function init() {
       renderEvents(allEvents, highlightedName, {
         containerSelector: "#all-events-list",
         emptyMessage: "No points logged yet. Awards will show here automatically.",
+        allowExpand: false,
       });
       const backLink = document.querySelector("#back-to-leaderboard");
       if (backLink) {
