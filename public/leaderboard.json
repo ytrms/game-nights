@@ -2,7 +2,7 @@
   "title": "Gravina Game Nights",
   "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
   "seasonLabel": "2026 Season",
-  "lastUpdated": "2025-10-26T09:26:22.427342+00:00",
+  "lastUpdated": "2025-10-26T13:55:18.704198+00:00",
   "leaderboard": [
     {
       "player": "Marcello",
@@ -165,7 +165,7 @@
     },
     {
       "player": "Manuel",
-      "points": 11,
+      "points": 12,
       "breakdown": [
         {
           "reason": "Joined Game Night #1!",
@@ -181,6 +181,11 @@
           "reason": "3rd place in Carcassonne",
           "count": 1,
           "points": 3
+        },
+        {
+          "reason": "Honesty Point",
+          "count": 1,
+          "points": 1
         }
       ],
       "rank": 8
@@ -376,6 +381,12 @@
           "points": 3,
           "reason": "3rd place in Carcassonne",
           "timestamp": "2025-10-26T09:26:22.427342+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 1,
+          "reason": "Honesty Point",
+          "timestamp": "2025-10-26T13:55:18.704198+00:00"
         }
       ]
     }
@@ -552,6 +563,12 @@
           "points": 3,
           "reason": "3rd place in Carcassonne",
           "timestamp": "2025-10-26T09:26:22.427342+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 1,
+          "reason": "Honesty Point",
+          "timestamp": "2025-10-26T13:55:18.704198+00:00"
         }
       ]
     }
