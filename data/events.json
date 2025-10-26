@@ -153,6 +153,24 @@
           "points": 3,
           "reason": "Third at Carcassonne",
           "timestamp": "2025-10-25T22:57:58.533925+00:00"
+        },
+        {
+          "player": "Marcello",
+          "points": 10,
+          "reason": "First at Carcassonne",
+          "timestamp": "2025-10-26T00:06:40.749580+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 5,
+          "reason": "Second at Carcassonne",
+          "timestamp": "2025-10-26T00:06:54.221470+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 3,
+          "reason": "Third at Carcassonne",
+          "timestamp": "2025-10-26T00:07:07.180616+00:00"
         }
       ]
     }
