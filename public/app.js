@@ -85,6 +85,8 @@ function renderLeaderboard(players = [], highlightedName = null) {
     const node = template.content.cloneNode(true);
     const li = node.querySelector(".leaderboard-item");
     const rank = node.querySelector(".player-rank");
+    const avatar = node.querySelector(".player-avatar");
+    const avatarWrapper = node.querySelector(".player-avatar-wrapper");
     const name = node.querySelector(".player-name");
     const points = node.querySelector(".player-points");
 
@@ -93,6 +95,7 @@ function renderLeaderboard(players = [], highlightedName = null) {
     rank.textContent = `#${player.rank}`;
     name.textContent = player.player;
     points.textContent = `${player.points} pt${player.points === 1 ? "" : "s"}`;
+    applyAvatar(avatar, player.player, avatarWrapper);
     if (highlightedName && normalizeName(player.player) === normalizeName(highlightedName)) {
       li.classList.add("highlight");
     }
@@ -113,6 +116,71 @@ function getGuestTokenFromUrl() {
   return decoded;
 }
 
+function getAvatarBases(playerName) {
+  if (!playerName) return [];
+  const trimmed = playerName.trim();
+  const encoded = encodeURIComponent(trimmed);
+  const underscored = trimmed.replace(/\s+/g, "_");
+  const ascii = normalizeName(trimmed).replace(/\s+/g, "_");
+  const bases = [trimmed, encoded, underscored, ascii];
+  const unique = [];
+  const seen = new Set();
+  bases.forEach((base) => {
+    if (!base) return;
+    const key = base.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    unique.push(base);
+  });
+  return unique;
+}
+
+function applyAvatar(img, playerName, wrapper) {
+  if (!img) return;
+
+  if (img._avatarErrorHandler) {
+    img.removeEventListener("error", img._avatarErrorHandler);
+    delete img._avatarErrorHandler;
+  }
+
+  const extensions = ["png", "jpg", "jpeg", "webp"];
+  const bases = getAvatarBases(playerName);
+  const sources = [];
+  bases.forEach((base) => {
+    extensions.forEach((ext) => {
+      sources.push(`./avatars/${base}.${ext}`);
+    });
+  });
+
+  let index = 0;
+
+  if (!sources.length) {
+    if (wrapper) wrapper.hidden = true;
+    img.hidden = true;
+    img.removeAttribute("src");
+    img.alt = "";
+    return;
+  }
+
+  const onError = () => {
+    if (index >= sources.length) {
+      img.removeEventListener("error", onError);
+      if (wrapper) wrapper.hidden = true;
+      img.hidden = true;
+      img.removeAttribute("src");
+      img.alt = "";
+      return;
+    }
+    img.src = sources[index++];
+  };
+
+  img._avatarErrorHandler = onError;
+  img.addEventListener("error", onError);
+  if (wrapper) wrapper.hidden = false;
+  img.hidden = false;
+  img.alt = playerName ? `${playerName}'s avatar` : "";
+  img.src = sources[index++];
+}
 function renderGreeting(tokens = {}) {
   const greetingEl = document.querySelector("#guest-greeting");
   if (!greetingEl) return null;
