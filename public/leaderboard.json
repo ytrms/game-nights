@@ -32,33 +32,6 @@
       "rank": 1
     },
     {
-      "player": "Aurora",
-      "points": 21,
-      "breakdown": [
-        {
-          "reason": "2nd place in Carcassonne",
-          "count": 1,
-          "points": 10
-        },
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "2nd place in Buffet Boss",
-          "count": 1,
-          "points": 3
-        },
-        {
-          "reason": "3rd place in Carcassonne",
-          "count": 1,
-          "points": 3
-        }
-      ],
-      "rank": 2
-    },
-    {
       "player": "G\u00fclsel",
       "points": 20,
       "breakdown": [
@@ -78,7 +51,7 @@
           "points": 5
         }
       ],
-      "rank": 3
+      "rank": 2
     },
     {
       "player": "Marcella",
@@ -100,7 +73,34 @@
           "points": 5
         }
       ],
-      "rank": 3
+      "rank": 2
+    },
+    {
+      "player": "Aurora",
+      "points": 16,
+      "breakdown": [
+        {
+          "reason": "2nd place in Carcassonne",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "2nd place in Buffet Boss",
+          "count": 1,
+          "points": 3
+        },
+        {
+          "reason": "3rd place in Carcassonne",
+          "count": 1,
+          "points": 3
+        }
+      ],
+      "rank": 4
     },
     {
       "player": "Baran",
@@ -122,7 +122,7 @@
           "points": 5
         }
       ],
-      "rank": 5
+      "rank": 4
     },
     {
       "player": "Lorenzo",
@@ -257,7 +257,7 @@
         },
         {
           "player": "Aurora",
-          "points": 10,
+          "points": 5,
           "reason": "2nd place in Carcassonne",
           "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
@@ -445,7 +445,7 @@
         },
         {
           "player": "Aurora",
-          "points": 10,
+          "points": 5,
           "reason": "2nd place in Carcassonne",
           "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
@@ -652,32 +652,32 @@
         {
           "player": "G\u00fclsel",
           "placement": 1,
-          "points": 5
+          "points": 10
         },
         {
           "player": "Aurora",
           "placement": 2,
-          "points": 3
+          "points": 5
         },
         {
           "player": "Marcello",
           "placement": 2,
-          "points": 3
+          "points": 5
         },
         {
           "player": "Marcella",
           "placement": 2,
-          "points": 3
+          "points": 5
         },
         {
           "player": "Baran",
           "placement": 3,
-          "points": 2
+          "points": 3
         },
         {
           "player": "Andrea",
           "placement": 3,
-          "points": 2
+          "points": 3
         },
         {
           "player": "Lorenzo",
@@ -854,32 +854,32 @@
         {
           "player": "G\u00fclsel",
           "placement": 1,
-          "points": 5
+          "points": 10
         },
         {
           "player": "Aurora",
           "placement": 2,
-          "points": 3
+          "points": 5
         },
         {
           "player": "Marcello",
           "placement": 2,
-          "points": 3
+          "points": 5
         },
         {
           "player": "Marcella",
           "placement": 2,
-          "points": 3
+          "points": 5
         },
         {
           "player": "Baran",
           "placement": 3,
-          "points": 2
+          "points": 3
         },
         {
           "player": "Andrea",
           "placement": 3,
-          "points": 2
+          "points": 3
         },
         {
           "player": "Lorenzo",
