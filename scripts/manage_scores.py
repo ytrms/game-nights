@@ -189,12 +189,253 @@ def dedupe_preserve_case(names: List[str]) -> List[str]:
     return result
 
 
-def compute_leaderboard(
+def compute_unranked_summary(
+    config: Dict[str, Any], events_payload: Dict[str, Any], plays_payload: Dict[str, Any]
+) -> Dict[str, Any]:
+    plays = plays_payload.get("plays", [])
+    unranked_plays = [play for play in plays if not play.get("scored")]
+    events = events_payload.get("events", [])
+
+    player_stats: Dict[str, Dict[str, Any]] = {}
+    recent_plays: List[Dict[str, Any]] = []
+    recent_events: List[Dict[str, Any]] = []
+    updated_candidates: List[datetime] = []
+
+    def ensure_stats(player_name: str) -> Dict[str, Any]:
+        entry = player_stats.get(player_name)
+        if entry:
+            return entry
+        entry = {
+            "player": player_name,
+            "plays": 0,
+            "points": 0,
+            "games": defaultdict(int),
+            "awards": defaultdict(int),
+        }
+        player_stats[player_name] = entry
+        return entry
+
+    def format_reason(placement: Optional[int]) -> str:
+        if placement == 1:
+            return "1st place"
+        if placement == 2:
+            return "2nd place"
+        if placement == 3:
+            return "3rd place"
+        return "Participated"
+
+    for play in unranked_plays:
+        game = play.get("game") or "Unranked session"
+        date_str = play.get("date")
+        event_name = play.get("event") or f"Unranked · {game}"
+        timestamp = parse_timestamp(play.get("timestamp"), date_str)
+        if timestamp:
+            updated_candidates.append(timestamp)
+
+        event_entry = {
+            "name": event_name,
+            "date": date_str,
+            "awards": [],
+            "timestamp": timestamp.isoformat() if timestamp else None,
+        }
+
+        for result in play.get("results", []):
+            player_name = result.get("player")
+            if not player_name:
+                continue
+
+            stats = ensure_stats(player_name)
+            stats["plays"] += 1
+            stats["points"] += int(result.get("points", 0))
+            stats["games"][game] += 1
+
+            event_entry["awards"].append(
+                {
+                    "player": player_name,
+                    "points": int(result.get("points", 0)),
+                    "reason": format_reason(result.get("placement")),
+                    "timestamp": timestamp.isoformat() if timestamp else None,
+                    "ranked": False,
+                }
+            )
+
+        if event_entry["awards"]:
+            recent_events.append(event_entry)
+
+        # recent plays reuse ranked structure
+        play_entry = {
+            "game": game,
+            "date": date_str,
+            "event": play.get("event"),
+            "scored": False,
+            "notes": play.get("notes"),
+            "timestamp": event_entry["timestamp"],
+            "results": play.get("results", []),
+        }
+        recent_plays.append(play_entry)
+
+    for event in events:
+        unranked_awards = [award for award in event.get("awards", []) if award.get("ranked") is False]
+        if not unranked_awards:
+            continue
+
+        timestamp = None
+        if unranked_awards:
+            timestamps = [parse_timestamp(award.get("timestamp")) for award in unranked_awards]
+            timestamps = [ts for ts in timestamps if ts]
+            if timestamps:
+                timestamp = max(timestamps)
+                updated_candidates.append(timestamp)
+
+        event_entry = {
+            "name": event.get("name") or "Unranked awards",
+            "date": event.get("date"),
+            "awards": [],
+            "timestamp": timestamp.isoformat() if timestamp else None,
+        }
+
+        for award in unranked_awards:
+            player_name = award.get("player")
+            if not player_name:
+                continue
+            stats = ensure_stats(player_name)
+            points_value = int(award.get("points", 0))
+            stats["points"] += points_value
+            stats["awards"][award.get("reason") or "Awarded points"] += 1
+
+            event_entry["awards"].append(
+                {
+                    "player": player_name,
+                    "points": points_value,
+                    "reason": award.get("reason") or "Awarded points",
+                    "timestamp": award.get("timestamp"),
+                    "ranked": False,
+                }
+            )
+
+        if event_entry["awards"]:
+            # sort newest first within event
+            event_entry["awards"].sort(
+                key=lambda award: parse_timestamp(award.get("timestamp"))
+                or parse_timestamp(event_entry.get("date"))
+                or datetime.min.replace(tzinfo=timezone.utc),
+                reverse=True,
+            )
+            recent_events.append(event_entry)
+
+    def latest_timestamp(entry_timestamp: Optional[str], fallback_date: Optional[str]) -> datetime:
+        return parse_timestamp(entry_timestamp, fallback_date) or datetime.min.replace(tzinfo=timezone.utc)
+
+    recent_events.sort(key=lambda ev: latest_timestamp(ev.get("timestamp"), ev.get("date")), reverse=True)
+    all_events = list(recent_events)
+
+    limit = config.get("recentEventsLimit", 5)
+    if isinstance(limit, int) and limit > 0:
+        recent_events = recent_events[:limit]
+
+    recent_plays.sort(key=lambda play: latest_timestamp(play.get("timestamp"), play.get("date")), reverse=True)
+    all_plays = list(recent_plays)
+    plays_limit = config.get("recentEventsLimit", 5)
+    if isinstance(plays_limit, int) and plays_limit > 0:
+        recent_plays = recent_plays[:plays_limit]
+
+    players_list = []
+    for stats in player_stats.values():
+        games_breakdown = sorted(
+            stats["games"].items(), key=lambda item: (-item[1], item[0].lower())
+        )
+        awards_breakdown = sorted(
+            stats["awards"].items(), key=lambda item: (-item[1], item[0].lower())
+        )
+        total_score = stats["points"] + stats["plays"]
+        breakdown = []
+        for game_name, count in games_breakdown:
+            breakdown.append(
+                {
+                    "reason": f"Played {game_name}",
+                    "count": count,
+                    "points": count,
+                }
+            )
+        for reason, count in awards_breakdown:
+            breakdown.append(
+                {
+                    "reason": f"Award: {reason}",
+                    "count": count,
+                    "points": count,
+                }
+            )
+
+        players_list.append(
+            {
+                "player": stats["player"],
+                "points": total_score,
+                "breakdown": breakdown,
+            }
+        )
+
+    players_list.sort(key=lambda player: (-player["points"], player["player"].lower()))
+
+    last_updated: Optional[datetime]
+    if updated_candidates:
+        last_updated = max(updated_candidates)
+    else:
+        last_updated = datetime.now(timezone.utc)
+
+    activity_list = []
+    for stats in player_stats.values():
+        games_breakdown = sorted(
+            stats["games"].items(), key=lambda item: (-item[1], item[0].lower())
+        )
+        activity_list.append(
+            {
+                "player": stats["player"],
+                "totalPlays": stats["plays"],
+                "scoredPlays": 0,
+                "unscoredPlays": stats["plays"],
+                "games": [
+                    {"game": game_name, "count": count}
+                    for game_name, count in games_breakdown
+                ],
+                "podiums": {
+                    "1": 0,
+                    "2": 0,
+                    "3": 0,
+                },
+            }
+        )
+
+    activity_list.sort(key=lambda entry: (-entry["totalPlays"], entry["player"].lower()))
+
+    title = config.get("title") or "Game Night Leaderboard"
+    tagline = config.get("tagline") or "Tracking every big play and bragging right."
+
+    result = {
+        "title": f"{title} · Unranked",
+        "tagline": "Casual sessions and side quests without leaderboard pressure.",
+        "seasonLabel": config.get("seasonLabel"),
+        "lastUpdated": last_updated.isoformat(),
+        "leaderboard": players_list,
+        "scoringRules": [],
+        "recentEvents": recent_events,
+        "allEvents": all_events,
+        "recentPlays": recent_plays,
+        "allPlays": all_plays,
+        "playerActivity": activity_list,
+        "mode": "unranked",
+        "pointsLabelSingular": "credit",
+        "pointsLabelPlural": "credits",
+    }
+    return result
+
+
+def compute_ranked_summary(
     config: Dict[str, Any], events_payload: Dict[str, Any], plays_payload: Dict[str, Any]
 ) -> Dict[str, Any]:
     players: Dict[str, Dict[str, Any]] = {}
     events = events_payload.get("events", [])
-    plays = plays_payload.get("plays", [])
+    all_plays = plays_payload.get("plays", [])
+    ranked_plays = [play for play in all_plays if play.get("scored")]
     recent_events: List[Dict[str, Any]] = []
     recent_plays: List[Dict[str, Any]] = []
     updated_candidates: List[datetime] = []
@@ -224,6 +465,8 @@ def compute_leaderboard(
         for award in awards:
             player_name = award.get("player")
             if not player_name:
+                continue
+            if award.get("ranked") is False:
                 continue
             try:
                 points = int(award.get("points", 0))
@@ -262,7 +505,7 @@ def compute_leaderboard(
             )
             recent_events.append(event_entry)
 
-    for play in plays:
+    for play in ranked_plays:
         game = play.get("game") or "Untitled Game"
         date_str = play.get("date")
         event_name = play.get("event")
@@ -420,22 +663,38 @@ def compute_leaderboard(
         "recentPlays": recent_plays,
         "allPlays": all_plays,
         "playerActivity": activity_list,
+        "mode": "ranked",
+        "pointsLabelSingular": "pt",
+        "pointsLabelPlural": "pts",
     }
     return result
+
+
+def compute_leaderboard(
+    config: Dict[str, Any], events_payload: Dict[str, Any], plays_payload: Dict[str, Any], mode: str = "ranked"
+) -> Dict[str, Any]:
+    if mode == "ranked":
+        return compute_ranked_summary(config, events_payload, plays_payload)
+    if mode == "unranked":
+        return compute_unranked_summary(config, events_payload, plays_payload)
+    raise ValueError(f"Unsupported mode: {mode}")
 
 
 def rebuild_leaderboard(verbose: bool = False) -> Dict[str, Any]:
     config = load_json(CONFIG_PATH, {})
     events = load_json(EVENTS_PATH, {"events": []})
     plays = load_plays_payload()
-    payload = compute_leaderboard(config, events, plays)
-    save_json(LEADERBOARD_PATH, payload)
+    ranked_payload = compute_leaderboard(config, events, plays, mode="ranked")
+    unranked_payload = compute_leaderboard(config, events, plays, mode="unranked")
+    save_json(LEADERBOARD_PATH, ranked_payload)
+    save_json(PUBLIC_DIR / "leaderboard-unranked.json", unranked_payload)
     guest_tokens = load_guest_tokens()
     save_json(PUBLIC_GUEST_TOKENS_PATH, guest_tokens)
     if verbose:
         print(f"Wrote leaderboard to {LEADERBOARD_PATH.relative_to(ROOT)}")
+        print(f"Wrote unranked leaderboard to {(PUBLIC_DIR / 'leaderboard-unranked.json').relative_to(ROOT)}")
         print(f"Wrote guest tokens to {PUBLIC_GUEST_TOKENS_PATH.relative_to(ROOT)}")
-    return payload
+    return ranked_payload
 
 
 def ensure_event(events: Dict[str, Any], name: str, date: str) -> Dict[str, Any]:
@@ -486,6 +745,18 @@ def command_award(args: argparse.Namespace) -> int:
     if not timestamp:
         timestamp = datetime.now(timezone.utc).isoformat()
 
+    if args.unranked and args.ranked:
+        print("Choose either ranked or unranked, not both.", file=sys.stderr)
+        return 1
+
+    if args.unranked:
+        ranked_flag = False
+    elif args.ranked:
+        ranked_flag = True
+    else:
+        ranked_prompt = input("Is this award ranked? [Y/n]: ").strip().lower()
+        ranked_flag = ranked_prompt not in ("n", "no")
+
     event = ensure_event(events, event_name, date)
     event.setdefault("awards", []).append(
         {
@@ -493,11 +764,13 @@ def command_award(args: argparse.Namespace) -> int:
             "points": points,
             "reason": reason,
             "timestamp": timestamp,
+            "ranked": ranked_flag,
         }
     )
     save_json(EVENTS_PATH, events)
     rebuild_leaderboard(verbose=args.verbose)
-    print(f"Awarded {points} pts to {player} for '{reason}' on {date}.")
+    status = "ranked" if ranked_flag else "unranked"
+    print(f"Awarded {points} pts to {player} for '{reason}' on {date} ({status}).")
     return 0
 
 
@@ -532,7 +805,8 @@ def command_events(args: argparse.Namespace) -> int:
             player = award.get("player", "Unknown")
             points = award.get("points", 0)
             reason = award.get("reason", "Awarded points")
-            print(f"  +{points} pts to {player}: {reason}")
+            suffix = " (unranked)" if award.get("ranked") is False else ""
+            print(f"  +{points} pts to {player}: {reason}{suffix}")
         print()
     return 0
 
@@ -756,13 +1030,15 @@ def command_plays_add(args: argparse.Namespace) -> int:
                             "points": points_value,
                             "reason": reason,
                             "timestamp": timestamp.isoformat(),
+                            "ranked": bool(scored),
                         }
                     )
             save_json(EVENTS_PATH, events_payload)
 
     rebuild_leaderboard(verbose=args.verbose)
 
-    print(f"Logged play of {game} on {date} with {len(participants)} participant(s).")
+    status = "ranked" if scored else "unranked"
+    print(f"Logged {status} play of {game} on {date} with {len(participants)} participant(s).")
     if auto_award and scored and event_name:
         print("Points were awarded based on placements.")
     return 0
@@ -831,6 +1107,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--timestamp",
         "-t",
         help="Exact timestamp for the award (ISO 8601). Defaults to current time.",
+    )
+    award_parser.add_argument(
+        "--unranked",
+        action="store_true",
+        help="Mark this award as unranked (excluded from the main leaderboard)",
+    )
+    award_parser.add_argument(
+        "--ranked",
+        action="store_true",
+        help="Explicitly mark this award as ranked (default)",
     )
     award_parser.add_argument("--verbose", "-v", action="store_true", help="Print file updates")
     award_parser.set_defaults(func=command_award)

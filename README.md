@@ -10,6 +10,7 @@ This repo bundles a small static site and helper script for publishing the Gravi
 - `data/plays.json` — every game play (ranked or unranked) with placements and participants.
 - `data/guest_tokens.json` — mapping of short greeting tokens to player names.
 - `scripts/manage_scores.py` — command-line helper for adding awards and rebuilding `public/leaderboard.json`.
+- `public/leaderboard-unranked.json` — generated dataset for the unranked view.
 
 ### Updating scores
 
@@ -25,6 +26,7 @@ This repo bundles a small static site and helper script for publishing the Gravi
    ```
 
    Any option you omit is requested interactively. The script updates `data/events.json` and regenerates `public/leaderboard.json`.
+   When prompted, choose whether the award is ranked (default) or unranked, or pass `--unranked`/`--ranked` explicitly.
 
 2. **Preview locally (optional)**
 
@@ -96,30 +98,35 @@ Generate a short, non-obvious token for each guest so they can tap a NFC tag or 
 Every play—ranked or unranked—feeds the new “Recent plays” timeline and per-player activity cards on the site.
 
 ```bash
-python3 scripts/manage_scores.py plays add \
-  --game "Carcassonne" \
-  --date 2025-10-25 \
-  --event "Game Night #1" \
-  --players "Lorenzo, Andrea, Aurora, Marcello" \
-  --first "Lorenzo, Andrea" \
-  --second "Marcello" \
-  --points-first 10 \
-  --points-second 4
+   python3 scripts/manage_scores.py plays add \
+     --game "Carcassonne" \
+     --date 2025-10-25 \
+     --event "Game Night #1" \
+     --players "Lorenzo, Andrea, Aurora, Marcello" \
+     --first "Lorenzo, Andrea" \
+     --second "Marcello" \
+     --points-first 10 \
+     --points-second 4
 ```
 
-- Omit any option to be prompted interactively. You can repeat `--first/--second/--third` or provide comma-separated names (use quotes if a name contains a comma).
-- Use `--unranked` for casual sessions; ranked plays award points automatically (5/3/2 by default) unless you pass `--no-award`. Override the values with `--points-first/--points-second/--points-third`—every player tied for a placement receives the full amount you set.
+   - Omit any option to be prompted interactively. You can repeat `--first/--second/--third` or provide comma-separated names (use quotes if a name contains a comma).
+   - Use `--unranked` for casual sessions; ranked plays award points automatically (5/3/2 by default) unless you pass `--no-award`. Override the values with `--points-first/--points-second/--points-third`—every player tied for a placement receives the full amount you set. Unranked plays skip auto-awards unless you explicitly supply `--award`.
 - Review or audit the log at any time:
 
   ```bash
   python3 scripts/manage_scores.py plays list --limit 10
   ```
 
+
 These entries populate the `playerActivity` section so guests can see how often they’ve played each game—even if no points were on the line.
 
-The homepage shows the three most recent sessions; tap **View all plays** (or open `/plays.html`) for the full archive.
+### Ranked vs. unranked views
 
-The point log works the same way: the homepage lists the last 10 entries, and `/points.html` carries the full award history.
+- `index.html` + friends show only ranked awards and plays.
+- `unranked.html`, `plays-unranked.html`, and `points-unranked.html` mirror the same dashboards for casual games. Navigation chips pass your `?guest=` token around so highlights stay lit when you swap views.
+- `python3 scripts/manage_scores.py rebuild` writes both `public/leaderboard.json` and `public/leaderboard-unranked.json`; add them both to commits so GitHub Pages can deploy each mode.
+
+The homepage shows the three most recent ranked sessions; tap **View all plays** (or open `/plays.html`) for the full archive. A matching `/unranked.html` hub, plus `/plays-unranked.html` and `/points-unranked.html`, presents the same dashboards filtered to casual games only. The point log mirrors this setup—five newest awards on each home view, full history on the dedicated pages.
 
 ### Customisation tips
 

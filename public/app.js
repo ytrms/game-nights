@@ -1,4 +1,5 @@
-const DATA_URL = "./leaderboard.json?v=" + Date.now();
+const PAGE_CONFIG = window.PAGE_CONFIG || {};
+const DATA_URL = `${PAGE_CONFIG.source || "./leaderboard.json"}?v=${Date.now()}`;
 const TOKENS_URL = "./guest_tokens.json?v=" + Date.now();
 
 async function fetchLeaderboard() {
@@ -67,7 +68,7 @@ function normalizeName(value) {
     .trim();
 }
 
-function renderLeaderboard(players = [], highlightedName = null) {
+function renderLeaderboard(players = [], highlightedName = null, labels = { singular: "pt", plural: "pts" }) {
   const container = document.querySelector("#leaderboard-list");
   const template = document.querySelector("#player-template");
   if (!container || !template) return;
@@ -94,7 +95,8 @@ function renderLeaderboard(players = [], highlightedName = null) {
     rank.dataset.rank = player.rank;
     rank.textContent = `#${player.rank}`;
     name.textContent = player.player;
-    points.textContent = `${player.points} pt${player.points === 1 ? "" : "s"}`;
+    const unit = player.points === 1 ? labels.singular : labels.plural;
+    points.textContent = `${player.points} ${unit}`;
     applyAvatar(avatar, player.player, avatarWrapper);
     if (highlightedName && normalizeName(player.player) === normalizeName(highlightedName)) {
       li.classList.add("highlight");
@@ -577,7 +579,12 @@ async function init() {
     const recentEvents = data.recentEvents || [];
     const searchSuffix = window.location.search || "";
 
-    renderLeaderboard(data.leaderboard, highlightedName);
+    const pointsLabels = {
+      singular: data.pointsLabelSingular || "pt",
+      plural: data.pointsLabelPlural || "pts",
+    };
+
+    renderLeaderboard(data.leaderboard, highlightedName, pointsLabels);
     renderPlays(allPlays, highlightedName, { limit: 3 });
     renderScoringRules(data.scoringRules);
     renderEvents(recentEvents, highlightedName, {
@@ -587,16 +594,25 @@ async function init() {
     });
     renderPlayerActivity(data.playerActivity, highlightedName);
 
+    const basePlaysPage = data.mode === "unranked" ? "./plays-unranked.html" : "./plays.html";
+    const baseEventsPage = data.mode === "unranked" ? "./points-unranked.html" : "./points.html";
+
     const viewAllPlaysButton = document.querySelector("#view-all-plays");
     if (viewAllPlaysButton) {
-      viewAllPlaysButton.href = `./plays.html${searchSuffix}`;
+      viewAllPlaysButton.href = `${basePlaysPage}${searchSuffix}`;
       viewAllPlaysButton.style.display = allPlays.length > 3 ? "inline-flex" : "none";
     }
 
     const viewAllEventsButton = document.querySelector("#view-all-events");
     if (viewAllEventsButton) {
-      viewAllEventsButton.href = `./points.html${searchSuffix}`;
+      viewAllEventsButton.href = `${baseEventsPage}${searchSuffix}`;
       viewAllEventsButton.style.display = allEvents.length > recentEvents.length ? "inline-flex" : "none";
+    }
+
+    const switchViewButton = document.querySelector("#switch-view");
+    if (switchViewButton) {
+      const targetHref = switchViewButton.getAttribute("href") || "./index.html";
+      switchViewButton.href = `${targetHref}${searchSuffix}`;
     }
 
     if (document.querySelector("#all-plays-list")) {
@@ -606,7 +622,8 @@ async function init() {
       });
       const backLink = document.querySelector("#back-to-leaderboard");
       if (backLink) {
-        backLink.href = `./index.html${searchSuffix}`;
+        const base = backLink.getAttribute("href") || "./index.html";
+        backLink.href = `${base}${searchSuffix}`;
       }
     }
 
@@ -618,7 +635,8 @@ async function init() {
       });
       const backLink = document.querySelector("#back-to-leaderboard");
       if (backLink) {
-        backLink.href = `./index.html${searchSuffix}`;
+        const base = backLink.getAttribute("href") || "./index.html";
+        backLink.href = `${base}${searchSuffix}`;
       }
     }
   } catch (error) {
