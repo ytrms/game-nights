@@ -185,6 +185,96 @@
           "timestamp": "2025-10-26T14:04:55.934528+00:00"
         }
       ]
+    },
+    {
+      "name": "Game Night #2",
+      "date": "2026-03-28",
+      "awards": [
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Lorenzo",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Andrea",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Lorenzo",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00",
+          "ranked": true
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Marcella",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Aurora",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "1st place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Marcella",
+          "points": 3,
+          "reason": "2nd place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00",
+          "ranked": true
+        },
+        {
+          "player": "Aurora",
+          "points": 2,
+          "reason": "3rd place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00",
+          "ranked": true
+        }
+      ]
     }
   ]
 }
