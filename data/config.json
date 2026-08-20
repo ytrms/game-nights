@@ -2,6 +2,9 @@
   "title": "Gravina Game Nights",
   "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
   "seasonLabel": "2026 Season",
+  "hiddenPlayers": [
+    "Baran"
+  ],
   "scoringRules": [
     { "label": "Win the marquee game", "points": 5 },
     { "label": "Bring a brand-new guest", "points": 3 },

@@ -189,6 +189,21 @@ def dedupe_preserve_case(names: List[str]) -> List[str]:
     return result
 
 
+def hidden_player_keys(config: Dict[str, Any]) -> set[str]:
+    hidden_players = config.get("hiddenPlayers", [])
+    if not isinstance(hidden_players, list):
+        return set()
+    return {
+        str(player).strip().casefold()
+        for player in hidden_players
+        if str(player).strip()
+    }
+
+
+def is_hidden_player(player_name: Any, hidden_players: set[str]) -> bool:
+    return str(player_name or "").strip().casefold() in hidden_players
+
+
 def compute_unranked_summary(
     config: Dict[str, Any], events_payload: Dict[str, Any], plays_payload: Dict[str, Any]
 ) -> Dict[str, Any]:
@@ -200,6 +215,7 @@ def compute_unranked_summary(
     recent_plays: List[Dict[str, Any]] = []
     recent_events: List[Dict[str, Any]] = []
     updated_candidates: List[datetime] = []
+    hidden_players = hidden_player_keys(config)
 
     def ensure_stats(player_name: str) -> Dict[str, Any]:
         entry = player_stats.get(player_name)
@@ -238,12 +254,14 @@ def compute_unranked_summary(
             "awards": [],
             "timestamp": timestamp.isoformat() if timestamp else None,
         }
+        visible_results = []
 
         for result in play.get("results", []):
             player_name = result.get("player")
-            if not player_name:
+            if not player_name or is_hidden_player(player_name, hidden_players):
                 continue
 
+            visible_results.append(result)
             stats = ensure_stats(player_name)
             stats["plays"] += 1
             stats["points"] += int(result.get("points", 0))
@@ -270,9 +288,10 @@ def compute_unranked_summary(
             "scored": False,
             "notes": play.get("notes"),
             "timestamp": event_entry["timestamp"],
-            "results": play.get("results", []),
+            "results": visible_results,
         }
-        recent_plays.append(play_entry)
+        if visible_results:
+            recent_plays.append(play_entry)
 
     for event in events:
         unranked_awards = [award for award in event.get("awards", []) if award.get("ranked") is False]
@@ -296,7 +315,7 @@ def compute_unranked_summary(
 
         for award in unranked_awards:
             player_name = award.get("player")
-            if not player_name:
+            if not player_name or is_hidden_player(player_name, hidden_players):
                 continue
             stats = ensure_stats(player_name)
             points_value = int(award.get("points", 0))
@@ -440,6 +459,7 @@ def compute_ranked_summary(
     recent_plays: List[Dict[str, Any]] = []
     updated_candidates: List[datetime] = []
     player_activity: Dict[str, Dict[str, Any]] = {}
+    hidden_players = hidden_player_keys(config)
 
     def ensure_activity(player_name: str) -> Dict[str, Any]:
         entry = player_activity.get(player_name)
@@ -464,7 +484,7 @@ def compute_ranked_summary(
 
         for award in awards:
             player_name = award.get("player")
-            if not player_name:
+            if not player_name or is_hidden_player(player_name, hidden_players):
                 continue
             if award.get("ranked") is False:
                 continue
@@ -528,7 +548,7 @@ def compute_ranked_summary(
 
         for result in results:
             player_name = result.get("player")
-            if not player_name:
+            if not player_name or is_hidden_player(player_name, hidden_players):
                 continue
             placement = result.get("placement")
             try:
@@ -689,7 +709,14 @@ def rebuild_leaderboard(verbose: bool = False) -> Dict[str, Any]:
     save_json(LEADERBOARD_PATH, ranked_payload)
     save_json(PUBLIC_DIR / "leaderboard-unranked.json", unranked_payload)
     guest_tokens = load_guest_tokens()
-    save_json(PUBLIC_GUEST_TOKENS_PATH, guest_tokens)
+    hidden_players = hidden_player_keys(config)
+    public_guest_tokens = dict(guest_tokens)
+    public_guest_tokens["tokens"] = {
+        token: player
+        for token, player in guest_tokens.get("tokens", {}).items()
+        if not is_hidden_player(player, hidden_players)
+    }
+    save_json(PUBLIC_GUEST_TOKENS_PATH, public_guest_tokens)
     if verbose:
         print(f"Wrote leaderboard to {LEADERBOARD_PATH.relative_to(ROOT)}")
         print(f"Wrote unranked leaderboard to {(PUBLIC_DIR / 'leaderboard-unranked.json').relative_to(ROOT)}")

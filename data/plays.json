@@ -203,6 +203,139 @@
           "points": 0
         }
       ]
+    },
+    {
+      "id": "gn2-carcassonne-1",
+      "game": "Carcassonne",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Carcassonne 1.",
+      "timestamp": "2026-08-20T10:02:42.849849+00:00",
+      "results": [
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Lorenzo",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Andrea",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Aurora",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Manuel",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "gn2-carcassonne-2",
+      "game": "Carcassonne",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Carcassonne 2.",
+      "timestamp": "2026-08-20T10:02:42.890751+00:00",
+      "results": [
+        {
+          "player": "Lorenzo",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Manuel",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Marcella",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Andrea",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "gn2-buffet-boss",
+      "game": "Buffet Boss",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Buffet Boss.",
+      "timestamp": "2026-08-20T10:02:42.932543+00:00",
+      "results": [
+        {
+          "player": "Manuel",
+          "placement": 1,
+          "points": 5
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 2
+        },
+        {
+          "player": "Lorenzo",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        }
+      ]
     }
   ]
 }

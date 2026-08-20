@@ -2,8 +2,52 @@
   "title": "Gravina Game Nights",
   "tagline": "Friendly competition, unforgettable memories, and plenty of snacks.",
   "seasonLabel": "2026 Season",
-  "lastUpdated": "2025-10-26T14:04:55.934528+00:00",
+  "lastUpdated": "2026-08-20T10:02:42.932543+00:00",
   "leaderboard": [
+    {
+      "player": "G\u00fclsel",
+      "points": 40,
+      "breakdown": [
+        {
+          "reason": "1st place in Carcassonne",
+          "count": 3,
+          "points": 30
+        },
+        {
+          "reason": "2nd place in Carcassonne",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "player": "Lorenzo",
+      "points": 35,
+      "breakdown": [
+        {
+          "reason": "1st place in Carcassonne",
+          "count": 2,
+          "points": 20
+        },
+        {
+          "reason": "2nd place in Carcassonne",
+          "count": 2,
+          "points": 10
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        }
+      ],
+      "rank": 2
+    },
     {
       "player": "Marcello",
       "points": 32,
@@ -29,33 +73,11 @@
           "points": 2
         }
       ],
-      "rank": 1
-    },
-    {
-      "player": "G\u00fclsel",
-      "points": 20,
-      "breakdown": [
-        {
-          "reason": "1st place in Carcassonne",
-          "count": 1,
-          "points": 10
-        },
-        {
-          "reason": "2nd place in Carcassonne",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 2
+      "rank": 3
     },
     {
       "player": "Marcella",
-      "points": 20,
+      "points": 31,
       "breakdown": [
         {
           "reason": "1st place in Carcassonne",
@@ -64,25 +86,8 @@
         },
         {
           "reason": "2nd place in Carcassonne",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 2
-    },
-    {
-      "player": "Aurora",
-      "points": 16,
-      "breakdown": [
-        {
-          "reason": "2nd place in Carcassonne",
-          "count": 1,
-          "points": 5
+          "count": 2,
+          "points": 10
         },
         {
           "reason": "Joined Game Night #1!",
@@ -103,8 +108,77 @@
       "rank": 4
     },
     {
-      "player": "Baran",
-      "points": 16,
+      "player": "Manuel",
+      "points": 22,
+      "breakdown": [
+        {
+          "reason": "1st place in Buffet Boss",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "2nd place in Carcassonne",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "2nd place in Buffet Boss",
+          "count": 1,
+          "points": 3
+        },
+        {
+          "reason": "3rd place in Carcassonne",
+          "count": 1,
+          "points": 3
+        },
+        {
+          "reason": "Honesty Point",
+          "count": 1,
+          "points": 1
+        }
+      ],
+      "rank": 5
+    },
+    {
+      "player": "Aurora",
+      "points": 21,
+      "breakdown": [
+        {
+          "reason": "3rd place in Carcassonne",
+          "count": 2,
+          "points": 6
+        },
+        {
+          "reason": "2nd place in Carcassonne",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "Joined Game Night #1!",
+          "count": 1,
+          "points": 5
+        },
+        {
+          "reason": "2nd place in Buffet Boss",
+          "count": 1,
+          "points": 3
+        },
+        {
+          "reason": "3rd place in Buffet Boss",
+          "count": 1,
+          "points": 2
+        }
+      ],
+      "rank": 6
+    },
+    {
+      "player": "Andrea",
+      "points": 17,
       "breakdown": [
         {
           "reason": "3rd place in Carcassonne",
@@ -120,45 +194,6 @@
           "reason": "Joined Game Night #1!",
           "count": 1,
           "points": 5
-        }
-      ],
-      "rank": 4
-    },
-    {
-      "player": "Lorenzo",
-      "points": 15,
-      "breakdown": [
-        {
-          "reason": "2nd place in Carcassonne",
-          "count": 2,
-          "points": 10
-        },
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        }
-      ],
-      "rank": 6
-    },
-    {
-      "player": "Andrea",
-      "points": 14,
-      "breakdown": [
-        {
-          "reason": "1st place in Buffet Boss",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "3rd place in Carcassonne",
-          "count": 1,
-          "points": 3
         },
         {
           "reason": "Honesty Point",
@@ -167,33 +202,6 @@
         }
       ],
       "rank": 7
-    },
-    {
-      "player": "Manuel",
-      "points": 12,
-      "breakdown": [
-        {
-          "reason": "Joined Game Night #1!",
-          "count": 1,
-          "points": 5
-        },
-        {
-          "reason": "2nd place in Buffet Boss",
-          "count": 1,
-          "points": 3
-        },
-        {
-          "reason": "3rd place in Carcassonne",
-          "count": 1,
-          "points": 3
-        },
-        {
-          "reason": "Honesty Point",
-          "count": 1,
-          "points": 1
-        }
-      ],
-      "rank": 8
     }
   ],
   "scoringRules": [
@@ -216,6 +224,84 @@
   ],
   "recentEvents": [
     {
+      "name": "Game Night #2",
+      "date": "2026-03-28",
+      "awards": [
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "1st place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 3,
+          "reason": "2nd place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 2,
+          "reason": "3rd place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        }
+      ]
+    },
+    {
       "name": "Game Night #1",
       "date": "2025-10-25",
       "awards": [
@@ -274,22 +360,10 @@
           "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
-          "player": "Baran",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
           "player": "Andrea",
           "points": 3,
           "reason": "3rd place in Carcassonne",
           "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 5,
-          "reason": "1st place in Buffet Boss",
-          "timestamp": "2025-10-26T09:16:49.745994+00:00"
         },
         {
           "player": "Andrea",
@@ -346,12 +420,6 @@
           "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
-          "player": "Baran",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
-        },
-        {
           "player": "Andrea",
           "points": 5,
           "reason": "Joined Game Night #1!",
@@ -380,12 +448,6 @@
           "points": 5,
           "reason": "Joined Game Night #1!",
           "timestamp": "2025-10-23T18:55:18.854171+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:05.550022+00:00"
         },
         {
           "player": "G\u00fclsel",
@@ -404,6 +466,84 @@
   ],
   "allEvents": [
     {
+      "name": "Game Night #2",
+      "date": "2026-03-28",
+      "awards": [
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "1st place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 3,
+          "reason": "2nd place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 2,
+          "reason": "3rd place in Buffet Boss",
+          "timestamp": "2026-08-20T10:02:42.932543+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "Manuel",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "Aurora",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.890751+00:00"
+        },
+        {
+          "player": "G\u00fclsel",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        },
+        {
+          "player": "Lorenzo",
+          "points": 10,
+          "reason": "1st place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        },
+        {
+          "player": "Marcella",
+          "points": 5,
+          "reason": "2nd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        },
+        {
+          "player": "Andrea",
+          "points": 3,
+          "reason": "3rd place in Carcassonne",
+          "timestamp": "2026-08-20T10:02:42.849849+00:00"
+        }
+      ]
+    },
+    {
       "name": "Game Night #1",
       "date": "2025-10-25",
       "awards": [
@@ -462,22 +602,10 @@
           "timestamp": "2025-10-26T09:19:33.964795+00:00"
         },
         {
-          "player": "Baran",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
           "player": "Andrea",
           "points": 3,
           "reason": "3rd place in Carcassonne",
           "timestamp": "2025-10-26T09:19:33.964795+00:00"
-        },
-        {
-          "player": "Baran",
-          "points": 5,
-          "reason": "1st place in Buffet Boss",
-          "timestamp": "2025-10-26T09:16:49.745994+00:00"
         },
         {
           "player": "Andrea",
@@ -534,12 +662,6 @@
           "timestamp": "2025-10-26T09:13:09.504685+00:00"
         },
         {
-          "player": "Baran",
-          "points": 3,
-          "reason": "3rd place in Carcassonne",
-          "timestamp": "2025-10-26T09:13:09.504685+00:00"
-        },
-        {
           "player": "Andrea",
           "points": 5,
           "reason": "Joined Game Night #1!",
@@ -570,12 +692,6 @@
           "timestamp": "2025-10-23T18:55:18.854171+00:00"
         },
         {
-          "player": "Baran",
-          "points": 5,
-          "reason": "Joined Game Night #1!",
-          "timestamp": "2025-10-23T18:55:05.550022+00:00"
-        },
-        {
           "player": "G\u00fclsel",
           "points": 5,
           "reason": "Joined Game Night #1!",
@@ -591,6 +707,136 @@
     }
   ],
   "recentPlays": [
+    {
+      "game": "Buffet Boss",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Buffet Boss.",
+      "timestamp": "2026-08-20T10:02:42.932543+00:00",
+      "results": [
+        {
+          "player": "Manuel",
+          "placement": 1,
+          "points": 5
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 2
+        },
+        {
+          "player": "Lorenzo",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "game": "Carcassonne",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Carcassonne 2.",
+      "timestamp": "2026-08-20T10:02:42.890751+00:00",
+      "results": [
+        {
+          "player": "Lorenzo",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Manuel",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Marcella",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Andrea",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "game": "Carcassonne",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Carcassonne 1.",
+      "timestamp": "2026-08-20T10:02:42.849849+00:00",
+      "results": [
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Lorenzo",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Andrea",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Aurora",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Manuel",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
     {
       "game": "Carcassonne",
       "date": "2025-10-25",
@@ -621,11 +867,6 @@
         },
         {
           "player": "G\u00fclsel",
-          "placement": null,
-          "points": 0
-        },
-        {
-          "player": "Baran",
           "placement": null,
           "points": 0
         },
@@ -670,11 +911,6 @@
           "points": 5
         },
         {
-          "player": "Baran",
-          "placement": 3,
-          "points": 3
-        },
-        {
           "player": "Andrea",
           "placement": 3,
           "points": 3
@@ -699,11 +935,6 @@
       "notes": "Prima partita a Buffet Boss dopo aver imparato. Con personaggi.",
       "timestamp": "2025-10-26T09:16:49.745994+00:00",
       "results": [
-        {
-          "player": "Baran",
-          "placement": 1,
-          "points": 5
-        },
         {
           "player": "Andrea",
           "placement": 1,
@@ -771,11 +1002,6 @@
         },
         {
           "player": "Manuel",
-          "placement": 3,
-          "points": 3
-        },
-        {
-          "player": "Baran",
           "placement": 3,
           "points": 3
         },
@@ -794,6 +1020,136 @@
   ],
   "allPlays": [
     {
+      "game": "Buffet Boss",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Buffet Boss.",
+      "timestamp": "2026-08-20T10:02:42.932543+00:00",
+      "results": [
+        {
+          "player": "Manuel",
+          "placement": 1,
+          "points": 5
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 2
+        },
+        {
+          "player": "Lorenzo",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "game": "Carcassonne",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Carcassonne 2.",
+      "timestamp": "2026-08-20T10:02:42.890751+00:00",
+      "results": [
+        {
+          "player": "Lorenzo",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Manuel",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Marcella",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Aurora",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Andrea",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "game": "Carcassonne",
+      "date": "2026-03-28",
+      "event": "Game Night #2",
+      "scored": true,
+      "notes": "Carcassonne 1.",
+      "timestamp": "2026-08-20T10:02:42.849849+00:00",
+      "results": [
+        {
+          "player": "G\u00fclsel",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Lorenzo",
+          "placement": 1,
+          "points": 10
+        },
+        {
+          "player": "Marcella",
+          "placement": 2,
+          "points": 5
+        },
+        {
+          "player": "Andrea",
+          "placement": 3,
+          "points": 3
+        },
+        {
+          "player": "Marcello",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Aurora",
+          "placement": null,
+          "points": 0
+        },
+        {
+          "player": "Manuel",
+          "placement": null,
+          "points": 0
+        }
+      ]
+    },
+    {
       "game": "Carcassonne",
       "date": "2025-10-25",
       "event": "Game Night #1",
@@ -823,11 +1179,6 @@
         },
         {
           "player": "G\u00fclsel",
-          "placement": null,
-          "points": 0
-        },
-        {
-          "player": "Baran",
           "placement": null,
           "points": 0
         },
@@ -872,11 +1223,6 @@
           "points": 5
         },
         {
-          "player": "Baran",
-          "placement": 3,
-          "points": 3
-        },
-        {
           "player": "Andrea",
           "placement": 3,
           "points": 3
@@ -901,11 +1247,6 @@
       "notes": "Prima partita a Buffet Boss dopo aver imparato. Con personaggi.",
       "timestamp": "2025-10-26T09:16:49.745994+00:00",
       "results": [
-        {
-          "player": "Baran",
-          "placement": 1,
-          "points": 5
-        },
         {
           "player": "Andrea",
           "placement": 1,
@@ -977,11 +1318,6 @@
           "points": 3
         },
         {
-          "player": "Baran",
-          "placement": 3,
-          "points": 3
-        },
-        {
           "player": "Aurora",
           "placement": null,
           "points": 0
@@ -996,56 +1332,140 @@
   ],
   "playerActivity": [
     {
-      "player": "Andrea",
-      "totalPlays": 4,
-      "scoredPlays": 4,
-      "unscoredPlays": 0,
-      "games": [
-        {
-          "game": "Carcassonne",
-          "count": 3
-        },
-        {
-          "game": "Buffet Boss",
-          "count": 1
-        }
-      ],
-      "podiums": {
-        "1": 1,
-        "2": 0,
-        "3": 1
-      }
-    },
-    {
       "player": "Aurora",
-      "totalPlays": 4,
-      "scoredPlays": 4,
+      "totalPlays": 7,
+      "scoredPlays": 7,
       "unscoredPlays": 0,
       "games": [
         {
           "game": "Carcassonne",
-          "count": 3
+          "count": 5
         },
         {
           "game": "Buffet Boss",
-          "count": 1
+          "count": 2
         }
       ],
       "podiums": {
         "1": 0,
         "2": 2,
-        "3": 1
+        "3": 3
       }
     },
     {
-      "player": "Baran",
-      "totalPlays": 4,
-      "scoredPlays": 4,
+      "player": "G\u00fclsel",
+      "totalPlays": 7,
+      "scoredPlays": 7,
       "unscoredPlays": 0,
       "games": [
         {
           "game": "Carcassonne",
-          "count": 3
+          "count": 5
+        },
+        {
+          "game": "Buffet Boss",
+          "count": 2
+        }
+      ],
+      "podiums": {
+        "1": 3,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "player": "Lorenzo",
+      "totalPlays": 7,
+      "scoredPlays": 7,
+      "unscoredPlays": 0,
+      "games": [
+        {
+          "game": "Carcassonne",
+          "count": 5
+        },
+        {
+          "game": "Buffet Boss",
+          "count": 2
+        }
+      ],
+      "podiums": {
+        "1": 2,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "player": "Manuel",
+      "totalPlays": 7,
+      "scoredPlays": 7,
+      "unscoredPlays": 0,
+      "games": [
+        {
+          "game": "Carcassonne",
+          "count": 5
+        },
+        {
+          "game": "Buffet Boss",
+          "count": 2
+        }
+      ],
+      "podiums": {
+        "1": 1,
+        "2": 2,
+        "3": 1
+      }
+    },
+    {
+      "player": "Marcella",
+      "totalPlays": 7,
+      "scoredPlays": 7,
+      "unscoredPlays": 0,
+      "games": [
+        {
+          "game": "Carcassonne",
+          "count": 5
+        },
+        {
+          "game": "Buffet Boss",
+          "count": 2
+        }
+      ],
+      "podiums": {
+        "1": 1,
+        "2": 3,
+        "3": 1
+      }
+    },
+    {
+      "player": "Marcello",
+      "totalPlays": 7,
+      "scoredPlays": 7,
+      "unscoredPlays": 0,
+      "games": [
+        {
+          "game": "Carcassonne",
+          "count": 5
+        },
+        {
+          "game": "Buffet Boss",
+          "count": 2
+        }
+      ],
+      "podiums": {
+        "1": 2,
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "player": "Andrea",
+      "totalPlays": 6,
+      "scoredPlays": 6,
+      "unscoredPlays": 0,
+      "games": [
+        {
+          "game": "Carcassonne",
+          "count": 5
         },
         {
           "game": "Buffet Boss",
@@ -1056,111 +1476,6 @@
         "1": 1,
         "2": 0,
         "3": 2
-      }
-    },
-    {
-      "player": "G\u00fclsel",
-      "totalPlays": 4,
-      "scoredPlays": 4,
-      "unscoredPlays": 0,
-      "games": [
-        {
-          "game": "Carcassonne",
-          "count": 3
-        },
-        {
-          "game": "Buffet Boss",
-          "count": 1
-        }
-      ],
-      "podiums": {
-        "1": 1,
-        "2": 1,
-        "3": 0
-      }
-    },
-    {
-      "player": "Lorenzo",
-      "totalPlays": 4,
-      "scoredPlays": 4,
-      "unscoredPlays": 0,
-      "games": [
-        {
-          "game": "Carcassonne",
-          "count": 3
-        },
-        {
-          "game": "Buffet Boss",
-          "count": 1
-        }
-      ],
-      "podiums": {
-        "1": 0,
-        "2": 2,
-        "3": 0
-      }
-    },
-    {
-      "player": "Manuel",
-      "totalPlays": 4,
-      "scoredPlays": 4,
-      "unscoredPlays": 0,
-      "games": [
-        {
-          "game": "Carcassonne",
-          "count": 3
-        },
-        {
-          "game": "Buffet Boss",
-          "count": 1
-        }
-      ],
-      "podiums": {
-        "1": 0,
-        "2": 1,
-        "3": 1
-      }
-    },
-    {
-      "player": "Marcella",
-      "totalPlays": 4,
-      "scoredPlays": 4,
-      "unscoredPlays": 0,
-      "games": [
-        {
-          "game": "Carcassonne",
-          "count": 3
-        },
-        {
-          "game": "Buffet Boss",
-          "count": 1
-        }
-      ],
-      "podiums": {
-        "1": 1,
-        "2": 1,
-        "3": 0
-      }
-    },
-    {
-      "player": "Marcello",
-      "totalPlays": 4,
-      "scoredPlays": 4,
-      "unscoredPlays": 0,
-      "games": [
-        {
-          "game": "Carcassonne",
-          "count": 3
-        },
-        {
-          "game": "Buffet Boss",
-          "count": 1
-        }
-      ],
-      "podiums": {
-        "1": 2,
-        "2": 1,
-        "3": 1
       }
     }
   ],

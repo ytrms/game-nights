@@ -66,6 +66,8 @@ This repo bundles a small static site and helper script for publishing the Gravi
 - `python3 scripts/manage_scores.py events` — review the event log and the points awarded at each night.
 - `python3 scripts/manage_scores.py rebuild` — regenerate `public/leaderboard.json` without changing any data (useful after editing `config.json` manually).
 
+To keep a player out of the public leaderboard, activity cards, play history, and greeting tokens without deleting the source records, add their name to `hiddenPlayers` in `data/config.json`, then rebuild.
+
 ### Personalized greeting links
 
 Generate a short, non-obvious token for each guest so they can tap a NFC tag or QR code that greets them by name:
